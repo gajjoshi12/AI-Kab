@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Kab — AI-Powered Growth for Med Spas</title>
+<meta name="description" content="AI Kab delivers A-to-Z business optimization and automation for med spas across the US. Smarter bookings, smarter marketing, smarter growth." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<div class="cursor-blob"></div>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">AI<span>Kab</span></div>
+    <div class="loader-bar"><span></span></div>
+    <div class="loader-text">Calibrating Intelligence…</div>
+  </div>
+</div>
+
+<!-- Noise overlay -->
+<div class="noise"></div>
+
+<!-- Progress bar -->
+<div class="scroll-progress"><span></span></div>
+
+<!-- Side nav dots -->
+<aside class="side-nav">
+  <a href="#top" data-section="top"><span></span><em>Intro</em></a>
+  <a href="#services" data-section="services"><span></span><em>Services</em></a>
+  <a href="#flow" data-section="flow"><span></span><em>Workflow</em></a>
+  <a href="#demo" data-section="demo"><span></span><em>Live AI</em></a>
+  <a href="#dashboard" data-section="dashboard"><span></span><em>Dashboard</em></a>
+  <a href="#roi" data-section="roi"><span></span><em>ROI</em></a>
+  <a href="#results" data-section="results"><span></span><em>Results</em></a>
+  <a href="#pricing" data-section="pricing"><span></span><em>Pricing</em></a>
+  <a href="#faq" data-section="faq"><span></span><em>FAQ</em></a>
+  <a href="#contact" data-section="contact"><span></span><em>Contact</em></a>
+</aside>
+
+<!-- Floating CTA -->
+<a href="#contact" class="floating-cta">
+  <span class="fc-dot"></span>
+  <span class="fc-label">Book a Strategy Call</span>
+  <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+</a>
+
+<!-- Navigation -->
+<header class="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark">
+      <svg viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f9c6d1"/><stop offset="1" stop-color="#7bb7ff"/></linearGradient></defs><circle cx="20" cy="20" r="16" fill="none" stroke="url(#lg)" stroke-width="1.5"/><circle cx="20" cy="20" r="4" fill="url(#lg)"/><circle cx="32" cy="10" r="2" fill="#f9c6d1"/><circle cx="8" cy="30" r="2" fill="#7bb7ff"/><path d="M20 20 L32 10 M20 20 L8 30" stroke="url(#lg)" stroke-width="0.8"/></svg>
+    </span>
+    <span class="brand-text">AI<span>Kab</span></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#services" data-link>Services</a>
+    <a href="#flow" data-link>How It Works</a>
+    <a href="#demo" data-link>Live AI</a>
+    <a href="#pricing" data-link>Pricing</a>
+    <a href="#contact" data-link>Contact</a>
+  </nav>
+  <a href="#contact" class="btn btn-primary nav-cta magnetic">
+    <span>Book a Strategy Call</span>
+    <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+  </a>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="pulse"></span>
+      AI Automation • Built for Med Spas in the US
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line"><span class="reveal">The Unfair</span></span>
+      <span class="line"><span class="reveal">Advantage Every</span></span>
+      <span class="line"><span class="reveal gradient">Med Spa Deserves.</span></span>
+    </h1>
+
+    <div class="hero-rotator reveal-soft">
+      <span class="rot-static">We automate your&nbsp;</span>
+      <span class="rot-words">
+        <span class="rot-word active">bookings.</span>
+        <span class="rot-word">marketing.</span>
+        <span class="rot-word">retention.</span>
+        <span class="rot-word">scheduling.</span>
+        <span class="rot-word">reviews.</span>
+        <span class="rot-word">entire ops.</span>
+      </span>
+    </div>
+
+    <p class="hero-sub reveal-soft">
+      From booking to billing, marketing to retention — AI Kab installs a unified AI brain across your med spa so you can focus on glowing clients, not spreadsheets.
+    </p>
+
+    <div class="hero-cta reveal-soft">
+      <a href="#demo" class="btn btn-primary magnetic">
+        <span>Try Live AI</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+      </a>
+      <a href="#flow" class="btn btn-ghost magnetic">
+        <span>See How It Works</span>
+      </a>
+    </div>
+
+    <div class="hero-mini-stats reveal-soft">
+      <div><b>312+</b><span>Med spas powered</span></div>
+      <div><b>68%</b><span>Avg revenue lift</span></div>
+      <div><b>14-day</b><span>Time to live</span></div>
+    </div>
+
+    <div class="hero-marquee">
+      <div class="marquee-track">
+        <span>HIPAA-Aware Automation</span><span>◆</span>
+        <span>24/7 AI Receptionist</span><span>◆</span>
+        <span>Smart Lead Scoring</span><span>◆</span>
+        <span>Predictive Scheduling</span><span>◆</span>
+        <span>Instagram &amp; TikTok Auto-Content</span><span>◆</span>
+        <span>Dynamic Pricing</span><span>◆</span>
+        <span>Retention AI</span><span>◆</span>
+        <span>Review Engine</span><span>◆</span>
+        <span>HIPAA-Aware Automation</span><span>◆</span>
+        <span>24/7 AI Receptionist</span><span>◆</span>
+        <span>Smart Lead Scoring</span><span>◆</span>
+        <span>Predictive Scheduling</span><span>◆</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust">
+  <div class="trust-inner">
+    <div class="trust-label">Powering med spas from</div>
+    <div class="trust-cities">
+      <span>Beverly Hills</span><span>Miami</span><span>Austin</span><span>New York</span><span>Scottsdale</span><span>Chicago</span><span>Dallas</span><span>Seattle</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-head">
+    <div class="eyebrow">What We Automate</div>
+    <h2 class="section-title split">A to Z. <span class="italic">Every lever.</span> One AI stack.</h2>
+    <p class="section-sub">We don't stitch together tools — we install a unified intelligence layer across your entire med spa operation.</p>
+  </div>
+
+  <div class="services-grid">
+    <article class="service-card" data-tilt>
+      <div class="service-num">01</div>
+      <div class="service-icon" data-icon="receptionist"></div>
+      <h3>AI Receptionist</h3>
+      <p>Books, reschedules, answers FAQs, upsells — 24/7, across SMS, IG DMs, and calls. Never miss a lead at 11pm again.</p>
+      <ul><li>Voice + Chat</li><li>Multi-language</li><li>CRM sync</li></ul>
+    </article>
+
+    <article class="service-card feature" data-tilt>
+      <div class="service-num">02</div>
+      <div class="service-icon" data-icon="marketing"></div>
+      <h3>Autonomous Marketing</h3>
+      <p>AI writes your Botox campaigns, designs creatives, A/B tests ads, and reallocates budget to what's actually converting.</p>
+      <ul><li>Meta + TikTok + Google</li><li>Creative factory</li><li>Attribution AI</li></ul>
+    </article>
+
+    <article class="service-card" data-tilt>
+      <div class="service-num">03</div>
+      <div class="service-icon" data-icon="retention"></div>
+      <h3>Retention Engine</h3>
+      <p>Predicts who's about to churn, triggers personal reach-outs, runs loyalty loops. Turn one-time fillers into 10-year clients.</p>
+      <ul><li>Churn scoring</li><li>Personalized offers</li><li>VIP tiers</li></ul>
+    </article>
+
+    <article class="service-card" data-tilt>
+      <div class="service-num">04</div>
+      <div class="service-icon" data-icon="scheduling"></div>
+      <h3>Predictive Scheduling</h3>
+      <p>AI fills cancellation gaps instantly with the right client, balances provider load, and protects your revenue-per-chair.</p>
+      <ul><li>Gap-fill AI</li><li>No-show prediction</li><li>Load balancing</li></ul>
+    </article>
+
+    <article class="service-card feature" data-tilt>
+      <div class="service-num">05</div>
+      <div class="service-icon" data-icon="review"></div>
+      <h3>Review &amp; Reputation AI</h3>
+      <p>Auto-requests reviews at the emotional peak, drafts responses in your tone, floods Google with 5-stars.</p>
+      <ul><li>Peak-moment detection</li><li>Tone-matched replies</li><li>Reputation radar</li></ul>
+    </article>
+
+    <article class="service-card" data-tilt>
+      <div class="service-num">06</div>
+      <div class="service-icon" data-icon="pricing"></div>
+      <h3>Dynamic Pricing AI</h3>
+      <p>Tunes service pricing by demand, provider, day-of-week, and client LTV. Average revenue lift: 18–34%.</p>
+      <ul><li>Demand curves</li><li>Package optimizer</li><li>LTV-aware</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- HOW IT WORKS (pinned horizontal scroll) -->
+<section id="flow" class="flow">
+  <div class="flow-sticky">
+    <div class="flow-head">
+      <div class="eyebrow">The Blueprint</div>
+      <h2 class="section-title">From booking to billing. <span class="gradient">Fully automated.</span></h2>
+    </div>
+    <div class="flow-track" id="flow-track">
+      <div class="flow-panels">
+        <article class="flow-panel">
+          <div class="flow-num">Step 01</div>
+          <h3>Intake &amp; Audit</h3>
+          <p>We plug into your booking system, CRM, and ad accounts. In 72 hours you get a full revenue-leak audit showing exactly where AI Kab will pay for itself.</p>
+          <div class="flow-visual visual-audit">
+            <div class="vbar" style="--h:30%"></div>
+            <div class="vbar" style="--h:55%"></div>
+            <div class="vbar" style="--h:42%"></div>
+            <div class="vbar" style="--h:78%"></div>
+            <div class="vbar" style="--h:64%"></div>
+            <div class="vbar" style="--h:88%"></div>
+            <div class="vbar" style="--h:72%"></div>
+            <div class="vscan"></div>
+          </div>
+        </article>
+        <article class="flow-panel">
+          <div class="flow-num">Step 02</div>
+          <h3>Train Your AI</h3>
+          <p>Kab ingests your services, price list, brand voice, and top-performer playbooks. The AI is trained specifically for your spa — not a generic chatbot.</p>
+          <div class="flow-visual visual-train">
+            <div class="neuron n1"></div><div class="neuron n2"></div><div class="neuron n3"></div>
+            <div class="neuron n4"></div><div class="neuron n5"></div><div class="neuron n6"></div>
+            <svg class="synapses" viewBox="0 0 300 200" preserveAspectRatio="none">
+              <line x1="40" y1="50" x2="150" y2="100"/>
+              <line x1="40" y1="150" x2="150" y2="100"/>
+              <line x1="150" y1="100" x2="260" y2="60"/>
+              <line x1="150" y1="100" x2="260" y2="140"/>
+              <line x1="40" y1="50" x2="260" y2="60"/>
+              <line x1="40" y1="150" x2="260" y2="140"/>
+            </svg>
+          </div>
+        </article>
+        <article class="flow-panel">
+          <div class="flow-num">Step 03</div>
+          <h3>Deploy Across Channels</h3>
+          <p>AI Receptionist on SMS, IG, calls. Marketing AI on Meta &amp; TikTok. Retention AI in the background. You watch it go live — no ops burden.</p>
+          <div class="flow-visual visual-deploy">
+            <div class="chan c1">SMS</div>
+            <div class="chan c2">Instagram</div>
+            <div class="chan c3">Google Ads</div>
+            <div class="chan c4">TikTok</div>
+            <div class="chan c5">Email</div>
+            <div class="chan c6">Voice</div>
+            <div class="chan-core">AI<span>Kab</span></div>
+          </div>
+        </article>
+        <article class="flow-panel">
+          <div class="flow-num">Step 04</div>
+          <h3>Learn &amp; Compound</h3>
+          <p>Every booking, every click, every review teaches the system. Performance compounds monthly — month 6 is 3x better than month 1.</p>
+          <div class="flow-visual visual-learn">
+            <svg viewBox="0 0 300 200" class="growth">
+              <defs>
+                <linearGradient id="gr" x1="0" x2="1">
+                  <stop offset="0" stop-color="#f9c6d1"/>
+                  <stop offset="1" stop-color="#8fc5ff"/>
+                </linearGradient>
+                <linearGradient id="grfill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#f9c6d1" stop-opacity="0.4"/>
+                  <stop offset="1" stop-color="#f9c6d1" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="growth-fill" d="M10,180 C60,170 100,150 140,120 S220,50 290,20 L290,200 L10,200 Z" fill="url(#grfill)"/>
+              <path class="growth-line" d="M10,180 C60,170 100,150 140,120 S220,50 290,20" stroke="url(#gr)" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle class="growth-dot" cx="290" cy="20" r="6" fill="#f9c6d1"/>
+            </svg>
+            <div class="growth-stat"><b>+312%</b><span>revenue at month 12</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="flow-progress"><span id="flow-progress-bar"></span></div>
+  </div>
+</section>
+
+<!-- INTERACTIVE AI DEMO -->
+<section id="demo" class="demo">
+  <div class="section-head">
+    <div class="eyebrow">Hands-On AI</div>
+    <h2 class="section-title">Meet <span class="gradient">Kab</span> — your always-on med spa brain.</h2>
+    <p class="section-sub">Ask anything a med spa owner might ask. Kab answers in real time, just like it would for your front desk and clients.</p>
+  </div>
+
+  <div class="demo-wrap">
+    <div class="demo-orb">
+      <div class="orb"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring r2"></div>
+      <div class="orb-ring r3"></div>
+      <div class="orb-particle p1"></div>
+      <div class="orb-particle p2"></div>
+      <div class="orb-particle p3"></div>
+      <div class="orb-particle p4"></div>
+    </div>
+
+    <div class="chat glass">
+      <div class="chat-head">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="url(#lg2)"/><defs><linearGradient id="lg2" x1="0" x2="1"><stop offset="0" stop-color="#f9c6d1"/><stop offset="1" stop-color="#7bb7ff"/></linearGradient></defs></svg>
+        </div>
+        <div>
+          <div class="chat-name">Kab <span class="status"><i></i> online</span></div>
+          <div class="chat-role">AI Concierge • responds in ~1.2s</div>
+        </div>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="msg bot">
+          <p>Hi, I'm Kab 👋 I run the AI stack for med spas like yours. Ask me: <em>"How do I fill last-minute Botox cancellations?"</em> or pick a prompt below.</p>
+        </div>
+      </div>
+      <div class="chat-chips">
+        <button class="chip" data-q="How do I fill last-minute cancellations?">Fill cancellations</button>
+        <button class="chip" data-q="How can AI double my monthly revenue?">Double my revenue</button>
+        <button class="chip" data-q="Write me an IG caption for a lip filler promo">Write an IG caption</button>
+        <button class="chip" data-q="How do you handle HIPAA and client data?">HIPAA &amp; data</button>
+      </div>
+      <form class="chat-input" id="chat-form">
+        <input id="chat-text" type="text" placeholder="Ask Kab anything about your med spa…" autocomplete="off" />
+        <button type="submit" aria-label="Send" class="magnetic">
+          <svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-7-8-1z" fill="currentColor"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DASHBOARD PREVIEW -->
+<section id="dashboard" class="dashboard">
+  <div class="section-head">
+    <div class="eyebrow">Live Command Center</div>
+    <h2 class="section-title">Your med spa, <span class="gradient">quantified in real time.</span></h2>
+    <p class="section-sub">Every metric that matters — unified, explained, and acted on by AI. This is a live preview.</p>
+  </div>
+
+  <div class="dash glass">
+    <div class="dash-head">
+      <div class="dash-tabs">
+        <button class="dash-tab active">Overview</button>
+        <button class="dash-tab">Bookings</button>
+        <button class="dash-tab">Marketing</button>
+        <button class="dash-tab">Retention</button>
+      </div>
+      <div class="dash-live"><span class="pulse"></span> Live</div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card big">
+        <div class="dc-label">Revenue (last 30 days)</div>
+        <div class="dc-num gradient" id="dc-rev">$184,320</div>
+        <div class="dc-trend up">▲ 34.2% vs previous</div>
+        <svg viewBox="0 0 400 140" class="dash-chart" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="dgr" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#f9c6d1" stop-opacity="0.5"/>
+              <stop offset="1" stop-color="#f9c6d1" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path id="dc-fill" d="" fill="url(#dgr)"/>
+          <path id="dc-line" d="" stroke="#f9c6d1" stroke-width="2.5" fill="none"/>
+          <circle id="dc-dot" cx="0" cy="0" r="5" fill="#fff"/>
+        </svg>
+      </div>
+
+      <div class="dash-card">
+        <div class="dc-label">AI conversations today</div>
+        <div class="dc-num" id="dc-conv">347</div>
+        <div class="dc-trend up">▲ 28 since you loaded this page</div>
+        <div class="dc-bars">
+          <span style="--h:35%"></span><span style="--h:60%"></span><span style="--h:45%"></span>
+          <span style="--h:80%"></span><span style="--h:65%"></span><span style="--h:90%"></span>
+          <span style="--h:75%"></span>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="dc-label">Bookings auto-filled</div>
+        <div class="dc-num" id="dc-book">82</div>
+        <div class="dc-ring">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none"/>
+            <circle id="dc-ring-fg" cx="60" cy="60" r="52" stroke="url(#lg3)" stroke-width="8" fill="none"
+              stroke-dasharray="326.7" stroke-dashoffset="80" transform="rotate(-90 60 60)" stroke-linecap="round"/>
+            <defs><linearGradient id="lg3" x1="0" x2="1"><stop offset="0" stop-color="#f9c6d1"/><stop offset="1" stop-color="#8fc5ff"/></linearGradient></defs>
+          </svg>
+          <div class="dc-ring-num" id="dc-ring-num">76%</div>
+        </div>
+      </div>
+
+      <div class="dash-card wide">
+        <div class="dc-label">Recent AI actions</div>
+        <div class="dc-feed" id="dc-feed">
+          <!-- JS-populated -->
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="dc-label">Reviews won</div>
+        <div class="dc-num" id="dc-rev2">1,284</div>
+        <div class="dc-stars">★★★★★ <span>4.96 avg</span></div>
+        <div class="dc-spark">
+          <svg viewBox="0 0 200 40" preserveAspectRatio="none"><polyline points="0,30 20,28 40,24 60,22 80,18 100,14 120,12 140,10 160,8 180,6 200,4" stroke="#e6c188" stroke-width="2" fill="none"/></svg>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="dc-label">Client LTV trending</div>
+        <div class="dc-num" id="dc-ltv">$3,240</div>
+        <div class="dc-trend up">▲ $420 this quarter</div>
+        <div class="dc-meter"><span style="width:72%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section id="roi" class="roi">
+  <div class="section-head">
+    <div class="eyebrow">Run The Numbers</div>
+    <h2 class="section-title">Your revenue, <span class="gradient">rewritten by AI.</span></h2>
+    <p class="section-sub">Slide your current metrics. Watch what AI Kab does to them.</p>
+  </div>
+
+  <div class="roi-grid">
+    <div class="roi-inputs glass">
+      <div class="slider">
+        <label>Monthly clients <span id="v-clients">320</span></label>
+        <input type="range" id="s-clients" min="50" max="2000" value="320" />
+      </div>
+      <div class="slider">
+        <label>Avg ticket ($) <span id="v-ticket">$420</span></label>
+        <input type="range" id="s-ticket" min="100" max="1500" value="420" />
+      </div>
+      <div class="slider">
+        <label>No-show rate <span id="v-noshow">14%</span></label>
+        <input type="range" id="s-noshow" min="0" max="40" value="14" />
+      </div>
+      <div class="slider">
+        <label>Ad spend ($/mo) <span id="v-ads">$4,500</span></label>
+        <input type="range" id="s-ads" min="0" max="50000" step="500" value="4500" />
+      </div>
+    </div>
+
+    <div class="roi-output">
+      <div class="kpi glass">
+        <div class="kpi-label">Current monthly revenue</div>
+        <div class="kpi-num" id="k-current">$134,400</div>
+        <div class="kpi-bar"><span id="b-current" style="width:40%"></span></div>
+      </div>
+      <div class="kpi glass featured">
+        <div class="kpi-label">With AI Kab (12 mo)</div>
+        <div class="kpi-num gradient" id="k-future">$231,168</div>
+        <div class="kpi-bar"><span id="b-future" style="width:85%"></span></div>
+        <div class="kpi-delta" id="k-delta">+ $96,768 / mo • +72%</div>
+      </div>
+      <div class="kpi-row">
+        <div class="mini-kpi glass"><div class="mini-label">Hours saved / wk</div><div class="mini-num" id="k-hours">41</div></div>
+        <div class="mini-kpi glass"><div class="mini-label">No-shows recovered</div><div class="mini-num" id="k-recovered">38</div></div>
+        <div class="mini-kpi glass"><div class="mini-label">Return on ad spend</div><div class="mini-num" id="k-roas">5.4x</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI BEFORE / AFTER -->
+<section id="results" class="results">
+  <div class="section-head">
+    <div class="eyebrow">See The Shift</div>
+    <h2 class="section-title">Before AI Kab. <span class="gradient">After AI Kab.</span></h2>
+    <p class="section-sub">Drag the slider. Watch an average Tuesday turn into a fully-booked one.</p>
+  </div>
+
+  <div class="ba-wrap">
+    <div class="ba" id="ba">
+      <div class="ba-panel ba-before">
+        <div class="ba-label">Before</div>
+        <div class="ba-schedule">
+          <div class="slot empty">9:00 — open</div>
+          <div class="slot">9:30 — Botox (Sarah)</div>
+          <div class="slot empty">10:00 — cancelled ❌</div>
+          <div class="slot empty">10:30 — open</div>
+          <div class="slot">11:00 — Filler (Jamie)</div>
+          <div class="slot empty">11:30 — no-show ❌</div>
+          <div class="slot empty">12:00 — lunch</div>
+          <div class="slot empty">1:00 — open</div>
+          <div class="slot">1:30 — HydraFacial</div>
+          <div class="slot empty">2:00 — cancelled ❌</div>
+          <div class="slot empty">2:30 — open</div>
+          <div class="slot">3:00 — Laser</div>
+          <div class="slot empty">3:30 — open</div>
+          <div class="slot empty">4:00 — open</div>
+        </div>
+        <div class="ba-stats">
+          <div><b>41%</b> chair utilization</div>
+          <div><b>3</b> no-shows</div>
+          <div><b>$1,240</b> revenue</div>
+        </div>
+      </div>
+      <div class="ba-panel ba-after">
+        <div class="ba-label">After</div>
+        <div class="ba-schedule">
+          <div class="slot full">9:00 — Botox (waitlist-filled)</div>
+          <div class="slot full">9:30 — Botox (Sarah)</div>
+          <div class="slot full">10:00 — Filler (AI rebooked)</div>
+          <div class="slot full">10:30 — Consult → upsell</div>
+          <div class="slot full">11:00 — Filler (Jamie)</div>
+          <div class="slot full">11:30 — Microneedling (SMS fill)</div>
+          <div class="slot full">12:00 — VIP lunch-slot</div>
+          <div class="slot full">1:00 — HydraFacial+</div>
+          <div class="slot full">1:30 — HydraFacial</div>
+          <div class="slot full">2:00 — Laser (retention offer)</div>
+          <div class="slot full">2:30 — Chemical peel</div>
+          <div class="slot full">3:00 — Laser</div>
+          <div class="slot full">3:30 — Kybella consult</div>
+          <div class="slot full">4:00 — Botox package</div>
+        </div>
+        <div class="ba-stats">
+          <div><b>97%</b> chair utilization</div>
+          <div><b>0</b> unfilled no-shows</div>
+          <div><b>$4,870</b> revenue</div>
+        </div>
+      </div>
+      <div class="ba-handle" id="ba-handle">
+        <div class="ba-handle-line"></div>
+        <div class="ba-handle-knob">
+          <svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS MARQUEE -->
+<section class="integrations">
+  <div class="int-head">
+    <div class="eyebrow">Plays Nice With</div>
+    <h3>Already using these tools? Perfect. AI Kab integrates in hours.</h3>
+  </div>
+  <div class="int-row">
+    <div class="int-track">
+      <div class="int-pill">Boulevard</div><div class="int-pill">Mindbody</div><div class="int-pill">Square</div>
+      <div class="int-pill">Vagaro</div><div class="int-pill">AestheticRecord</div><div class="int-pill">Mangomint</div>
+      <div class="int-pill">Zenoti</div><div class="int-pill">Stripe</div><div class="int-pill">Meta Ads</div>
+      <div class="int-pill">TikTok Ads</div><div class="int-pill">Google Ads</div><div class="int-pill">Klaviyo</div>
+      <div class="int-pill">Boulevard</div><div class="int-pill">Mindbody</div><div class="int-pill">Square</div>
+      <div class="int-pill">Vagaro</div><div class="int-pill">AestheticRecord</div><div class="int-pill">Mangomint</div>
+    </div>
+  </div>
+  <div class="int-row reverse">
+    <div class="int-track">
+      <div class="int-pill">HubSpot</div><div class="int-pill">Salesforce</div><div class="int-pill">Twilio</div>
+      <div class="int-pill">Instagram</div><div class="int-pill">TikTok</div><div class="int-pill">Google Business</div>
+      <div class="int-pill">Yelp</div><div class="int-pill">Facebook</div><div class="int-pill">Active Campaign</div>
+      <div class="int-pill">QuickBooks</div><div class="int-pill">Shopify</div><div class="int-pill">Calendly</div>
+      <div class="int-pill">HubSpot</div><div class="int-pill">Salesforce</div><div class="int-pill">Twilio</div>
+      <div class="int-pill">Instagram</div><div class="int-pill">TikTok</div><div class="int-pill">Google Business</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num" data-count="312">0</div><div class="stat-label">Med spas powered</div></div>
+    <div class="stat"><div class="stat-num" data-count="47">0</div><div class="stat-label">States served</div></div>
+    <div class="stat"><div class="stat-num" data-count="68">0</div><div class="stat-label">% avg revenue lift</div></div>
+    <div class="stat"><div class="stat-num" data-count="24">0</div><div class="stat-label">/7 AI uptime</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-head">
+    <div class="eyebrow">What Owners Say</div>
+    <h2 class="section-title">The receipts.</h2>
+  </div>
+
+  <div class="t-grid">
+    <article class="t-card glass" data-tilt>
+      <div class="stars">★★★★★</div>
+      <p>"We stopped hiring our 3rd front-desk. Kab books more appointments than any human we've had."</p>
+      <div class="t-who"><b>Rachel L.</b> • Owner, Glow Aesthetics, Austin</div>
+    </article>
+    <article class="t-card glass" data-tilt>
+      <div class="stars">★★★★★</div>
+      <p>"Our ad ROAS went from 2.1x to 6.8x in 90 days. I honestly don't understand it. I just cash the checks."</p>
+      <div class="t-who"><b>Dr. Mark R.</b> • Medical Director, Lumen MedSpa, Miami</div>
+    </article>
+    <article class="t-card glass" data-tilt>
+      <div class="stars">★★★★★</div>
+      <p>"The retention AI re-activated 140 old clients in the first month. That's $62k I had sitting in my database."</p>
+      <div class="t-who"><b>Priya M.</b> • Founder, Velvet Skin Co., NYC</div>
+    </article>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="section-head">
+    <div class="eyebrow">Investment</div>
+    <h2 class="section-title">Pick your <span class="gradient">growth tier.</span></h2>
+    <p class="section-sub">Every plan includes our ROI guarantee — if AI Kab doesn't pay for itself in 90 days, we work free until it does.</p>
+  </div>
+
+  <div class="price-grid">
+    <article class="price-card" data-tilt>
+      <div class="price-name">Launch</div>
+      <div class="price-tag"><sup>$</sup><span>997</span><small>/mo</small></div>
+      <p class="price-for">For single-location spas finding their AI legs.</p>
+      <ul class="price-feats">
+        <li>AI Receptionist (SMS + chat)</li>
+        <li>Review &amp; reputation engine</li>
+        <li>Basic retention automations</li>
+        <li>1 integration</li>
+        <li>Email support</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost magnetic"><span>Start with Launch</span></a>
+    </article>
+
+    <article class="price-card feature" data-tilt>
+      <div class="price-badge">Most Picked</div>
+      <div class="price-name">Growth</div>
+      <div class="price-tag"><sup>$</sup><span>2,497</span><small>/mo</small></div>
+      <p class="price-for">For spas ready to 2–3x in the next 12 months.</p>
+      <ul class="price-feats">
+        <li>Everything in Launch</li>
+        <li>Autonomous Marketing (Meta + Google)</li>
+        <li>Predictive scheduling + gap-fill AI</li>
+        <li>Dynamic pricing</li>
+        <li>Unlimited integrations</li>
+        <li>Dedicated strategist</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary magnetic"><span>Start with Growth</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+      </a>
+    </article>
+
+    <article class="price-card" data-tilt>
+      <div class="price-name">Empire</div>
+      <div class="price-tag"><span>Custom</span></div>
+      <p class="price-for">For multi-location operators &amp; franchise groups.</p>
+      <ul class="price-feats">
+        <li>Everything in Growth</li>
+        <li>Multi-location command center</li>
+        <li>Custom LLM fine-tuning</li>
+        <li>SOC 2 + HIPAA documentation</li>
+        <li>Quarterly on-site strategy</li>
+        <li>24/7 priority support</li>
+      </ul>
+      <a href="#contact" class="btn btn-ghost magnetic"><span>Talk to Empire</span></a>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="section-head">
+    <div class="eyebrow">Answered</div>
+    <h2 class="section-title">Everything owners <span class="gradient">actually ask us.</span></h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary>
+        <span>How fast can we go live?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">Most spas are fully live in <b>14 days</b>. Week 1 we plug in + audit. Week 2 we train the AI on your voice, services, and team. Day 14 you flip the switch.</div>
+    </details>
+    <details class="faq-item">
+      <summary>
+        <span>Is it HIPAA compliant?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">Yes. All PHI is stored in BAA-covered, encrypted, audited infrastructure. Your client data is never used to train public AI models. SOC 2 Type II attestation in progress.</div>
+    </details>
+    <details class="faq-item">
+      <summary>
+        <span>Will clients know they're talking to AI?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">Kab identifies as your AI concierge by default (trust + compliance). Owners often find clients love it — faster replies, no wait times, zero judgment on sensitive questions.</div>
+    </details>
+    <details class="faq-item">
+      <summary>
+        <span>What if my team hates it?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">They won't. AI Kab handles the repetitive drag (rebooking, reminders, FAQ) so your providers do the work they trained for: treatments and real client conversations. We've yet to have a team ask for it to be turned off.</div>
+    </details>
+    <details class="faq-item">
+      <summary>
+        <span>Do I need to change my booking software?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">No. We integrate with Boulevard, Mindbody, Vagaro, Mangomint, Zenoti, AestheticRecord, Square, and most major PMS platforms. If yours has an API, we'll connect it.</div>
+    </details>
+    <details class="faq-item">
+      <summary>
+        <span>What's the ROI guarantee?</span>
+        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+      </summary>
+      <div class="faq-body">If AI Kab doesn't recover its own monthly fee within 90 days, we work for free until it does. In 4 years of operation, we've had to honor this exactly <b>twice</b>.</div>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-inner glass">
+    <div class="contact-left">
+      <div class="eyebrow">Ready when you are</div>
+      <h2>Let's install the AI advantage <span class="gradient">in your med spa.</span></h2>
+      <p>Free 30-min strategy call. We'll map your revenue leaks and show you exactly where AI Kab pays for itself — usually within the first 17 days.</p>
+      <ul class="contact-bullets">
+        <li><span>✓</span> No long-term contracts</li>
+        <li><span>✓</span> Live in 14 days</li>
+        <li><span>✓</span> ROI guarantee or we work free</li>
+      </ul>
+    </div>
+    <form class="contact-form" id="contact-form">
+      <div class="field">
+        <label>Your name</label>
+        <input required type="text" name="name" placeholder="Jane Aesthetician" />
+      </div>
+      <div class="field">
+        <label>Med spa name</label>
+        <input required type="text" name="spa" placeholder="Glow &amp; Go MedSpa" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input required type="email" name="email" placeholder="jane@yourspa.com" />
+      </div>
+      <div class="field">
+        <label>Monthly revenue range</label>
+        <select name="range">
+          <option>Under $50k</option>
+          <option>$50k – $150k</option>
+          <option selected>$150k – $500k</option>
+          <option>$500k+</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg magnetic">
+        <span>Claim my Strategy Call</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+      </button>
+      <div class="form-note" id="form-note"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="brand-text big">AI<span>Kab</span></div>
+      <p>The AI growth layer for modern med spas. Built in the US, deployed everywhere.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <a href="#services">Services</a>
+      <a href="#demo">Live AI</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#roi">ROI Calculator</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <a href="mailto:hello@aikab.com">hello@aikab.com</a>
+      <a href="tel:+18885550199">+1 (888) 555-0199</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span id="year"></span> AI Kab, Inc. All rights reserved.</div>
+    <div>Crafted for the beauty industry. Powered by AI.</div>
+  </div>
+</footer>
+
+<!-- Guaranteed loader-hide fallback (runs even if module scripts fail) -->
+<script>
+  (function () {
+    function hideLoader() {
+      var l = document.getElementById('loader');
+      if (l) l.classList.add('hide');
+      var lines = document.querySelectorAll('.hero-title .reveal');
+      lines.forEach(function (el, i) {
+        setTimeout(function () {
+          el.style.transition = 'transform 1.1s cubic-bezier(0.2,0.8,0.2,1)';
+          el.style.transform = 'translateY(0)';
+        }, 120 + i * 140);
+      });
+      setTimeout(function () {
+        document.querySelectorAll('.reveal-soft').forEach(function (el) { el.classList.add('in'); });
+      }, 700);
+    }
+    if (document.readyState === 'complete') setTimeout(hideLoader, 900);
+    else window.addEventListener('load', function () { setTimeout(hideLoader, 900); });
+    setTimeout(hideLoader, 3500);
+  })();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
