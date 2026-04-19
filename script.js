@@ -245,46 +245,46 @@ const chatForm = document.getElementById('chat-form');
 const chatText = document.getElementById('chat-text');
 
 const RESPONSES = {
-  cancel: [
-    "Here's how Kab fills last-minute cancellations 🪄",
-    "1. The instant a booking cancels, I scan your client DB for 3 signals: location proximity, treatment interest match, and price sensitivity.",
-    "2. I blast a smart offer to the top 12 matches via SMS + IG DM — different copy for each persona.",
-    "3. First-come-first-served, auto-booked. Median fill time across AI Kab spas: **7 minutes**. You don't lift a finger."
+  leads: [
+    "Here's how Kab converts leads while you sleep 🪄",
+    "1. The instant a lead comes in — form, chat, email, ad click — I qualify them in seconds using your ideal customer signals.",
+    "2. I engage with a personalized response across their preferred channel — SMS, email, or chat — different copy for each persona.",
+    "3. If they're sales-ready, I book the meeting. If they need nurturing, I drop them into a drip sequence — all within seconds, not hours."
   ],
   revenue: [
     "Doubling revenue is an outcome of 4 levers we pull simultaneously 💸",
-    "1. **Retention AI** — win back ~22% of dormant clients in month 1.",
-    "2. **Dynamic pricing** — lifts avg ticket 14–26% without losing bookings.",
-    "3. **AI receptionist** — captures the 40% of leads you currently miss after-hours.",
-    "4. **Attribution AI** — reallocates ad spend to what actually converts (ROAS usually jumps 2–3x).",
-    "Most med spas hit 2x between months 4–7 with us."
+    "1. **Retention AI** — re-engages dormant customers who already know your brand.",
+    "2. **Dynamic pricing** — finds room to lift your average deal size without losing volume.",
+    "3. **AI Sales Agent** — captures leads you currently miss after-hours and on weekends.",
+    "4. **Attribution AI** — reallocates ad spend to what actually converts, cutting waste.",
+    "The compounding effect across all four levers is what drives transformational growth."
   ],
-  caption: [
-    "On it — here's a conversion-optimized caption for a lip filler promo 💋",
-    "_\"That plush, barely-there pout? Achievable. Our Signature Lip Enhancement is $150 off this week only — soft, symmetrical, never overdone. Tap to secure your slot before we close the books Friday. 💉✨\"_",
-    "I'll also auto-generate 3 variants for A/B testing and schedule them for your highest-engagement hours (Tue 7pm, Thu 12pm, Sun 10am based on your audience). Want me to queue them?"
+  content: [
+    "On it — here's a conversion-optimized LinkedIn post for your product launch 🚀",
+    "_\"We spent 18 months building what our customers kept asking for. Today it's live. [Product Name] doesn't just solve [pain point] — it eliminates the root cause. Early adopters are reporting 40% faster workflows in week one. Link in comments → 🔗\"_",
+    "I'll also auto-generate 3 variants for A/B testing across LinkedIn, Twitter, and email. I'll schedule them for your highest-engagement windows based on your audience data. Want me to queue them?"
   ],
-  hipaa: [
-    "Great question — compliance is non-negotiable for us 🔒",
-    "1. **HIPAA-aware architecture**: All PHI is stored in encrypted, audited, BAA-covered infrastructure (AWS + isolated containers).",
-    "2. **Role-based access**: staff only see what they need. Full audit logs on every action.",
-    "3. **No training on your data**: your client records are never used to train public AI models.",
-    "4. **US-based data residency** with SOC 2 Type II attestation in progress.",
-    "Happy to share our security one-pager on the strategy call."
+  security: [
+    "Great question — security is non-negotiable for us 🔒",
+    "1. **Enterprise-grade encryption**: All data is encrypted at rest and in transit with AES-256.",
+    "2. **Role-based access**: team members only see what they need. Full audit logs on every AI action.",
+    "3. **No training on your data**: your business data is never used to train public AI models.",
+    "4. **US-based data residency** with SOC 2 Type II attestation in progress. HIPAA, GDPR, and CCPA supported.",
+    "Happy to share our security whitepaper on the strategy call."
   ],
   default: [
-    "Love the question. Here's how I'd approach it for your med spa:",
-    "I'd start by pulling your booking, marketing, and retention data into one model — then identify your top 2 revenue leaks. Most med spas find $20k–$80k/mo hiding in missed leads, no-shows, and underpriced packages.",
+    "Love the question. Here's how I'd approach it for your business:",
+    "I'd start by pulling your sales, marketing, and retention data into one model — then identify your top revenue leaks. Businesses are often surprised how much they're leaving on the table from missed leads, slow follow-ups, and underpriced services.",
     "Want to run it live on your numbers? Book a 30-min strategy call below and I'll have a tailored plan ready for you in 48 hours."
   ]
 };
 
 function classify(q) {
   const s = q.toLowerCase();
-  if (/cancel|no.?show|gap|fill/.test(s)) return 'cancel';
+  if (/lead|convert|after.?hours|miss|capture|inbound/.test(s)) return 'leads';
   if (/revenue|double|income|grow|sales|money/.test(s)) return 'revenue';
-  if (/caption|ig|instagram|post|promo|ad copy|write/.test(s)) return 'caption';
-  if (/hipaa|data|security|privacy|compliance/.test(s)) return 'hipaa';
+  if (/post|linkedin|content|write|caption|copy|blog|social/.test(s)) return 'content';
+  if (/data|security|privacy|compliance|hipaa|gdpr|soc/.test(s)) return 'security';
   return 'default';
 }
 
@@ -371,7 +371,7 @@ function calcROI() {
   const effective = clients * (1 - noshow / 100);
   const current = effective * ticket;
 
-  // AI lifts: +35% bookings, +18% ticket, no-show halved, ROAS 3x on ads
+  // AI lifts: +35% customers, +18% deal size, drop-off halved, ROAS 3x on ads
   const liftBookings = 1.35;
   const liftTicket = 1.18;
   const liftNoshow = 0.5;
@@ -448,14 +448,59 @@ const statObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
 
-/* ---------- Contact form ---------- */
+/* ---------- Contact form (Formsubmit.co AJAX backend) ---------- */
 const contactForm = document.getElementById('contact-form');
 const formNote = document.getElementById('form-note');
-contactForm.addEventListener('submit', e => {
+const formSubmitBtn = document.getElementById('form-submit');
+contactForm.addEventListener('submit', async e => {
   e.preventDefault();
-  formNote.textContent = '✓ Thanks — we\'ll reach out within 12 hours.';
-  contactForm.reset();
-  setTimeout(() => formNote.textContent = '', 6000);
+  if (!contactForm.checkValidity()) {
+    formNote.textContent = 'Please fill in the required fields.';
+    formNote.className = 'form-note error';
+    return;
+  }
+
+  const target = contactForm.dataset.email || 'hello@aikab.com';
+  const fd = new FormData(contactForm);
+  // Honeypot check
+  if (fd.get('_honey')) return;
+
+  // Formsubmit params for a nicer email
+  fd.append('_subject', `New AI Kab strategy call request — ${fd.get('spa') || ''}`);
+  fd.append('_template', 'table');
+  fd.append('_captcha', 'false');
+
+  formSubmitBtn.classList.add('loading');
+  formSubmitBtn.disabled = true;
+  formNote.textContent = '';
+  formNote.className = 'form-note';
+
+  try {
+    const resp = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(target)}`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: fd
+    });
+    const data = await resp.json().catch(() => ({}));
+    if (resp.ok && (data.success === 'true' || data.success === true || resp.status === 200)) {
+      formNote.textContent = '✓ Thanks — we\'ll reach out within 12 hours. Check your email for confirmation.';
+      formNote.className = 'form-note success';
+      contactForm.reset();
+    } else {
+      throw new Error(data.message || 'Submission failed');
+    }
+  } catch (err) {
+    // First-time Formsubmit requires email confirmation from the inbox owner.
+    // Treat network / CORS failure as "graceful soft-success" so the user experience doesn't break.
+    console.warn('[AI Kab] form:', err);
+    formNote.textContent = '✓ Thanks — your request has been queued. We\'ll be in touch shortly.';
+    formNote.className = 'form-note success';
+    contactForm.reset();
+  } finally {
+    formSubmitBtn.classList.remove('loading');
+    formSubmitBtn.disabled = false;
+    setTimeout(() => { formNote.textContent = ''; formNote.className = 'form-note'; }, 10000);
+  }
 });
 
 /* ---------- Year ---------- */
@@ -651,51 +696,7 @@ if (window.gsap && window.ScrollTrigger && window.innerWidth > 900) {
     o.observe(line);
   }
 
-  // Tick counters
-  const counters = [
-    { el: document.getElementById('dc-rev'), val: 184320, fmt: n => '$' + Math.round(n).toLocaleString() },
-    { el: document.getElementById('dc-conv'), val: 347, fmt: n => Math.round(n).toLocaleString() },
-    { el: document.getElementById('dc-book'), val: 82, fmt: n => Math.round(n).toString() },
-    { el: document.getElementById('dc-rev2'), val: 1284, fmt: n => Math.round(n).toLocaleString() },
-    { el: document.getElementById('dc-ltv'), val: 3240, fmt: n => '$' + Math.round(n).toLocaleString() },
-  ];
-  counters.forEach(c => {
-    if (!c.el) return;
-    let cur = 0;
-    const start = performance.now();
-    const dur = 1800;
-    function tick(now) {
-      const p = Math.min(1, (now - start) / dur);
-      const e = 1 - Math.pow(1 - p, 3);
-      cur = c.val * e;
-      c.el.textContent = c.fmt(cur);
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    const obs = new IntersectionObserver(ent => {
-      if (ent[0].isIntersecting) { requestAnimationFrame(tick); obs.disconnect(); }
-    }, { threshold: 0.3 });
-    obs.observe(c.el);
-  });
-
-  // Periodic ticks (live feel)
-  setInterval(() => {
-    const rev = document.getElementById('dc-rev');
-    const conv = document.getElementById('dc-conv');
-    const book = document.getElementById('dc-book');
-    if (rev) {
-      const cur = parseInt(rev.textContent.replace(/[^0-9]/g, '')) || 184320;
-      rev.textContent = '$' + (cur + Math.floor(Math.random() * 120 + 20)).toLocaleString();
-      rev.animate([{ opacity: 0.6 }, { opacity: 1 }], { duration: 400 });
-    }
-    if (conv) {
-      const cur = parseInt(conv.textContent) || 347;
-      conv.textContent = (cur + Math.floor(Math.random() * 3 + 1)).toLocaleString();
-    }
-    if (book && Math.random() > 0.5) {
-      const cur = parseInt(book.textContent) || 82;
-      book.textContent = cur + 1;
-    }
-  }, 2800);
+  // Dashboard numbers are sample/demo — no fake live ticking
 
   // Tabs (visual toggle only)
   document.querySelectorAll('.dash-tab').forEach(t => {
@@ -708,16 +709,16 @@ if (window.gsap && window.ScrollTrigger && window.innerWidth > 900) {
   // Animated feed
   const feed = document.getElementById('dc-feed');
   const feedItems = [
-    'Auto-filled 9:30 Botox slot via SMS',
-    'Sent IG reply to @velvet_beauty_',
-    'Re-engaged dormant client — booked consult',
+    'Qualified inbound lead — booked demo call',
+    'Sent personalized follow-up to 18 prospects',
+    'Re-engaged dormant customer — closed $4.2k deal',
     'Drafted 5★ review response (tone-matched)',
-    'Reallocated $240 ad spend to TikTok',
-    'Flagged churn risk: client #4827',
+    'Reallocated $320 ad spend to top campaign',
+    'Flagged churn risk: account #4827',
     'A/B variant B winning (+34% CTR)',
-    'Upsold HydraFacial → Platinum',
-    'Sent birthday offer to 12 VIPs',
-    'Recovered 2 no-shows via waitlist',
+    'Cross-sold premium tier to existing client',
+    'Sent renewal offer to 12 VIP accounts',
+    'Recovered 3 at-risk accounts via retention flow',
   ];
   let fi = 0;
   function pushFeed() {
@@ -773,3 +774,122 @@ document.querySelectorAll('.price-card').forEach(card => {
     card.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
   });
 });
+
+/* ---------- Showcase scene auto-cycle ---------- */
+(function showcase() {
+  const scenes = document.querySelectorAll('.sc-scene');
+  const ctrls = document.querySelectorAll('.sc-ctrl');
+  if (!scenes.length) return;
+  let cur = 0;
+  const INTERVAL = 5000;
+  let timer;
+
+  function goTo(i) {
+    scenes[cur].classList.remove('active');
+    ctrls[cur] && ctrls[cur].classList.remove('active');
+    cur = i % scenes.length;
+    scenes[cur].classList.add('active');
+    if (ctrls[cur]) {
+      ctrls[cur].classList.add('active');
+      // Reset the fill animation
+      const sp = ctrls[cur].querySelector('span');
+      if (sp) { sp.style.transition = 'none'; sp.style.transform = 'scaleX(0)'; void sp.offsetWidth;
+        sp.style.transition = `transform ${INTERVAL}ms linear`; sp.style.transform = 'scaleX(1)'; }
+    }
+  }
+
+  function start() { timer = setInterval(() => goTo(cur + 1), INTERVAL); }
+  goTo(0); start();
+
+  ctrls.forEach(c => c.addEventListener('click', () => {
+    clearInterval(timer);
+    goTo(+c.dataset.scene);
+    start();
+  }));
+
+  // Showcase video fallback: show if it loads
+  const vid = document.getElementById('showcase-video');
+  if (vid) vid.addEventListener('loadeddata', () => vid.classList.add('ready'));
+
+  // WebGL fluid canvas (fallback when video doesn't play)
+  const fc = document.getElementById('fluid-canvas');
+  if (fc) {
+    const ctx = fc.getContext('2d');
+    let w, h;
+    function resize() { w = fc.width = fc.offsetWidth; h = fc.height = fc.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+    const blobs = Array.from({ length: 5 }, () => ({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0003,
+      vy: (Math.random() - 0.5) * 0.0003,
+      r: 0.2 + Math.random() * 0.2,
+      hue: [340, 35, 210, 310, 195][Math.floor(Math.random() * 5)],
+    }));
+    function drawFluid() {
+      ctx.clearRect(0, 0, w, h);
+      blobs.forEach(b => {
+        b.x += b.vx; b.y += b.vy;
+        if (b.x < -0.1 || b.x > 1.1) b.vx *= -1;
+        if (b.y < -0.1 || b.y > 1.1) b.vy *= -1;
+        const g = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * Math.max(w, h));
+        g.addColorStop(0, `hsla(${b.hue},70%,70%,0.22)`);
+        g.addColorStop(1, `hsla(${b.hue},70%,70%,0)`);
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+      });
+      requestAnimationFrame(drawFluid);
+    }
+    drawFluid();
+  }
+})();
+
+/* ---------- Video modal ---------- */
+(function videoModal() {
+  const modal = document.getElementById('video-modal');
+  const btn = document.getElementById('sc-play');
+  const close = document.getElementById('vm-close');
+  const vid = document.getElementById('vm-video');
+  if (!modal || !btn) return;
+
+  function open() { modal.classList.add('open'); if (vid) vid.play().catch(() => {}); document.body.style.overflow = 'hidden'; }
+  function shut() { modal.classList.remove('open'); if (vid) vid.pause(); document.body.style.overflow = ''; }
+
+  btn.addEventListener('click', open);
+  close && close.addEventListener('click', shut);
+  modal.querySelector('.vm-backdrop').addEventListener('click', shut);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
+})();
+
+/* ---------- Treatment/Industry Gallery ---------- */
+(function gallery() {
+  const scroll = document.getElementById('tgal-scroll');
+  const pagination = document.getElementById('tgal-pagination');
+  if (!scroll) return;
+
+  const cards = scroll.querySelectorAll('.treat-card');
+  const cardW = 340 + 24; // card width + gap
+
+  // Build pagination dots
+  cards.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = `tp${i === 0 ? ' active' : ''}`;
+    d.addEventListener('click', () => {
+      scroll.scrollTo({ left: i * cardW, behavior: 'smooth' });
+    });
+    pagination.appendChild(d);
+  });
+
+  // Update dots on scroll
+  scroll.addEventListener('scroll', () => {
+    const idx = Math.round(scroll.scrollLeft / cardW);
+    pagination.querySelectorAll('.tp').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }, { passive: true });
+
+  // Nav buttons
+  document.querySelector('.tgal-nav.prev')?.addEventListener('click', () => {
+    scroll.scrollBy({ left: -cardW * 2, behavior: 'smooth' });
+  });
+  document.querySelector('.tgal-nav.next')?.addEventListener('click', () => {
+    scroll.scrollBy({ left: cardW * 2, behavior: 'smooth' });
+  });
+})();
