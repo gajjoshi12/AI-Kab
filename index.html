@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#070510" />
 <title>AI Kab — A-to-Z Business Automation &amp; Optimization Using AI</title>
 <meta name="description" content="AI Kab delivers end-to-end AI-powered business automation — sales, marketing, operations, support, and growth — for companies across the US." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://assets.calendly.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- =====================================================
+     CALENDLY: replace the value below with your real link.
+     ===================================================== -->
+<script>window.AIKAB_CALENDLY_URL = 'https://calendly.com/aikab/strategy-call';</script>
 </head>
 <body>
 
-<!-- Custom cursor -->
+<!-- Custom cursor (desktop only) -->
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <div class="cursor-blob"></div>
@@ -32,24 +39,21 @@
 <!-- Progress bar -->
 <div class="scroll-progress"><span></span></div>
 
-<!-- Side nav dots -->
+<!-- Side nav dots (desktop) -->
 <aside class="side-nav">
   <a href="#top" data-section="top"><span></span><em>Intro</em></a>
   <a href="#services" data-section="services"><span></span><em>Services</em></a>
   <a href="#flow" data-section="flow"><span></span><em>Workflow</em></a>
-  <a href="#showcase" data-section="showcase"><span></span><em>Showcase</em></a>
   <a href="#demo" data-section="demo"><span></span><em>Live AI</em></a>
-  <a href="#dashboard" data-section="dashboard"><span></span><em>Dashboard</em></a>
   <a href="#roi" data-section="roi"><span></span><em>ROI</em></a>
   <a href="#industries" data-section="industries"><span></span><em>Industries</em></a>
-  <a href="#results" data-section="results"><span></span><em>Results</em></a>
   <a href="#pricing" data-section="pricing"><span></span><em>Pricing</em></a>
   <a href="#faq" data-section="faq"><span></span><em>FAQ</em></a>
-  <a href="#contact" data-section="contact"><span></span><em>Contact</em></a>
+  <a href="#book" data-section="book"><span></span><em>Book</em></a>
 </aside>
 
-<!-- Floating CTA -->
-<a href="#contact" class="floating-cta">
+<!-- Floating CTA (mobile-friendly) -->
+<a href="#book" class="floating-cta" data-cal-link>
   <span class="fc-dot"></span>
   <span class="fc-label">Book a Strategy Call</span>
   <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
@@ -68,13 +72,34 @@
     <a href="#flow" data-link>How It Works</a>
     <a href="#demo" data-link>Live AI</a>
     <a href="#pricing" data-link>Pricing</a>
-    <a href="#contact" data-link>Contact</a>
+    <a href="#book" data-link>Book</a>
   </nav>
-  <a href="#contact" class="btn btn-primary nav-cta magnetic">
+  <a href="#book" class="btn btn-primary nav-cta magnetic" data-cal-link>
     <span>Book a Strategy Call</span>
     <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
   </a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="md-backdrop" data-close></div>
+  <nav class="md-panel">
+    <button class="md-close" data-close aria-label="Close menu">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+    </button>
+    <a href="#services" data-close>Services</a>
+    <a href="#flow" data-close>How It Works</a>
+    <a href="#demo" data-close>Live AI</a>
+    <a href="#roi" data-close>ROI Calculator</a>
+    <a href="#industries" data-close>Industries</a>
+    <a href="#pricing" data-close>Pricing</a>
+    <a href="#faq" data-close>FAQ</a>
+    <a href="#book" class="md-cta" data-close data-cal-link>Book a Strategy Call</a>
+  </nav>
+</div>
 
 <!-- HERO -->
 <section id="top" class="hero">
@@ -111,12 +136,12 @@
     </p>
 
     <div class="hero-cta reveal-soft">
-      <a href="#demo" class="btn btn-primary magnetic">
-        <span>Try Live AI</span>
+      <a href="#book" class="btn btn-primary magnetic" data-cal-link>
+        <span>Book a Strategy Call</span>
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
       </a>
-      <a href="#flow" class="btn btn-ghost magnetic">
-        <span>See How It Works</span>
+      <a href="#demo" class="btn btn-ghost magnetic">
+        <span>Try Live AI</span>
       </a>
     </div>
 
@@ -147,7 +172,7 @@
 <!-- TRUST STRIP -->
 <section class="trust">
   <div class="trust-inner">
-    <div class="trust-label">Trusted across industries</div>
+    <div class="trust-label">Built for every industry</div>
     <div class="trust-cities">
       <span>Healthcare</span><span>E-Commerce</span><span>Real Estate</span><span>SaaS</span><span>Hospitality</span><span>Finance</span><span>Retail</span><span>Professional Services</span>
     </div>
@@ -213,7 +238,7 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS (pinned horizontal scroll) -->
+<!-- HOW IT WORKS (pinned horizontal scroll on desktop, stacked on mobile) -->
 <section id="flow" class="flow">
   <div class="flow-sticky">
     <div class="flow-head">
@@ -225,7 +250,7 @@
         <article class="flow-panel">
           <div class="flow-num">Step 01</div>
           <h3>Intake &amp; Audit</h3>
-          <p>We plug into your CRM, ad accounts, support tools, and workflows. In 72 hours you get a full revenue-leak audit showing exactly where AI Kab will pay for itself.</p>
+          <p>We plug into your CRM, ad accounts, support tools, and workflows. You get a full revenue-leak audit showing exactly where AI Kab will pay for itself.</p>
           <div class="flow-visual visual-audit">
             <div class="vbar" style="--h:30%"></div>
             <div class="vbar" style="--h:55%"></div>
@@ -271,7 +296,7 @@
         <article class="flow-panel">
           <div class="flow-num">Step 04</div>
           <h3>Learn &amp; Compound</h3>
-          <p>Every deal, every click, every ticket teaches the system. Performance compounds monthly — month 6 is 3x better than month 1.</p>
+          <p>Every deal, every click, every ticket teaches the system. Performance compounds monthly — the longer it runs, the smarter it gets.</p>
           <div class="flow-visual visual-learn">
             <svg viewBox="0 0 300 200" class="growth">
               <defs>
@@ -296,71 +321,6 @@
     <div class="flow-progress"><span id="flow-progress-bar"></span></div>
   </div>
 </section>
-
-<!-- CINEMATIC SHOWCASE -->
-<section id="showcase" class="showcase">
-  <canvas id="fluid-canvas" class="fluid-canvas"></canvas>
-  <video id="showcase-video" class="showcase-video" autoplay muted loop playsinline preload="metadata">
-    <source src="https://cdn.coverr.co/videos/coverr-typing-on-a-laptop-at-an-office-desk-1891/1080p.mp4" type="video/mp4" />
-  </video>
-  <div class="showcase-veil"></div>
-
-  <div class="showcase-inner">
-    <div class="sc-eyebrow">
-      <span class="pulse"></span>
-      Cinematic Reel • Every Lead. Every Channel. Every Dollar.
-    </div>
-
-    <div class="sc-scenes">
-      <div class="sc-scene active">
-        <div class="sc-index">01 / 04</div>
-        <h2 class="sc-quote">"Before you open your inbox, <span class="gradient italic">Kab has already closed the deal.</span>"</h2>
-        <p class="sc-cap">AI qualifies, nurtures, and books meetings from every channel — while your team sleeps.</p>
-      </div>
-      <div class="sc-scene">
-        <div class="sc-index">02 / 04</div>
-        <h2 class="sc-quote">"During the call, <span class="gradient italic">Kab is warming up the next one.</span>"</h2>
-        <p class="sc-cap">Follow-up sequences, cross-sell triggers, and review requests fire at the perfect moment.</p>
-      </div>
-      <div class="sc-scene">
-        <div class="sc-index">03 / 04</div>
-        <h2 class="sc-quote">"After the sale, <span class="gradient italic">Kab remembers everything.</span>"</h2>
-        <p class="sc-cap">Personalized re-engagement, loyalty offers, and churn prevention — on autopilot, in your voice.</p>
-      </div>
-      <div class="sc-scene">
-        <div class="sc-index">04 / 04</div>
-        <h2 class="sc-quote">"While you sleep, <span class="gradient italic">the business grows itself.</span>"</h2>
-        <p class="sc-cap">Ads optimized, prices tuned, reviews climbing, leads converting. You wake up ahead of yesterday.</p>
-      </div>
-    </div>
-
-    <div class="sc-controls">
-      <button class="sc-ctrl" data-scene="0"><span></span></button>
-      <button class="sc-ctrl" data-scene="1"><span></span></button>
-      <button class="sc-ctrl" data-scene="2"><span></span></button>
-      <button class="sc-ctrl" data-scene="3"><span></span></button>
-    </div>
-
-    <button class="sc-play magnetic" id="sc-play">
-      <span class="sc-play-ring"></span>
-      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-      <span class="sc-play-label">Watch the 90-second demo</span>
-    </button>
-  </div>
-</section>
-
-<!-- Video modal -->
-<div class="video-modal" id="video-modal">
-  <div class="vm-backdrop"></div>
-  <div class="vm-frame">
-    <button class="vm-close" id="vm-close" aria-label="Close">
-      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-    </button>
-    <video id="vm-video" controls playsinline preload="metadata">
-      <source src="https://cdn.coverr.co/videos/coverr-typing-on-a-laptop-at-an-office-desk-1891/1080p.mp4" type="video/mp4" />
-    </video>
-  </div>
-</div>
 
 <!-- INTERACTIVE AI DEMO -->
 <section id="demo" class="demo">
@@ -413,99 +373,12 @@
   </div>
 </section>
 
-<!-- LIVE DASHBOARD PREVIEW -->
-<section id="dashboard" class="dashboard">
-  <div class="section-head">
-    <div class="eyebrow">Live Command Center</div>
-    <h2 class="section-title">Your business, <span class="gradient">quantified in real time.</span></h2>
-    <p class="section-sub">Every metric that matters — unified, explained, and acted on by AI. Below is a sample dashboard with demo data.</p>
-  </div>
-
-  <div class="dash glass">
-    <div class="dash-head">
-      <div class="dash-tabs">
-        <button class="dash-tab active">Overview</button>
-        <button class="dash-tab">Sales</button>
-        <button class="dash-tab">Marketing</button>
-        <button class="dash-tab">Retention</button>
-      </div>
-      <div class="dash-live"><span class="pulse"></span> Live</div>
-    </div>
-
-    <div class="dash-grid">
-      <div class="dash-card big">
-        <div class="dc-label">Revenue (last 30 days)</div>
-        <div class="dc-num gradient" id="dc-rev">—</div>
-        <div class="dc-trend up">Sample data</div>
-        <svg viewBox="0 0 400 140" class="dash-chart" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="dgr" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="#f9c6d1" stop-opacity="0.5"/>
-              <stop offset="1" stop-color="#f9c6d1" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path id="dc-fill" d="" fill="url(#dgr)"/>
-          <path id="dc-line" d="" stroke="#f9c6d1" stroke-width="2.5" fill="none"/>
-          <circle id="dc-dot" cx="0" cy="0" r="5" fill="#fff"/>
-        </svg>
-      </div>
-
-      <div class="dash-card">
-        <div class="dc-label">AI conversations today</div>
-        <div class="dc-num" id="dc-conv">—</div>
-        <div class="dc-trend up">Sample data</div>
-        <div class="dc-bars">
-          <span style="--h:35%"></span><span style="--h:60%"></span><span style="--h:45%"></span>
-          <span style="--h:80%"></span><span style="--h:65%"></span><span style="--h:90%"></span>
-          <span style="--h:75%"></span>
-        </div>
-      </div>
-
-      <div class="dash-card">
-        <div class="dc-label">Deals auto-closed</div>
-        <div class="dc-num" id="dc-book">—</div>
-        <div class="dc-ring">
-          <svg viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none"/>
-            <circle id="dc-ring-fg" cx="60" cy="60" r="52" stroke="url(#lg3)" stroke-width="8" fill="none"
-              stroke-dasharray="326.7" stroke-dashoffset="80" transform="rotate(-90 60 60)" stroke-linecap="round"/>
-            <defs><linearGradient id="lg3" x1="0" x2="1"><stop offset="0" stop-color="#f9c6d1"/><stop offset="1" stop-color="#8fc5ff"/></linearGradient></defs>
-          </svg>
-          <div class="dc-ring-num" id="dc-ring-num">76%</div>
-        </div>
-      </div>
-
-      <div class="dash-card wide">
-        <div class="dc-label">Recent AI actions</div>
-        <div class="dc-feed" id="dc-feed">
-        </div>
-      </div>
-
-      <div class="dash-card">
-        <div class="dc-label">Reviews won</div>
-        <div class="dc-num" id="dc-rev2">—</div>
-        <div class="dc-stars">★★★★★ <span>Sample</span></div>
-        <div class="dc-spark">
-          <svg viewBox="0 0 200 40" preserveAspectRatio="none"><polyline points="0,30 20,28 40,24 60,22 80,18 100,14 120,12 140,10 160,8 180,6 200,4" stroke="#e6c188" stroke-width="2" fill="none"/></svg>
-        </div>
-      </div>
-
-      <div class="dash-card">
-        <div class="dc-label">Customer LTV trending</div>
-        <div class="dc-num" id="dc-ltv">—</div>
-        <div class="dc-trend up">Sample data</div>
-        <div class="dc-meter"><span style="width:72%"></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ROI CALCULATOR -->
 <section id="roi" class="roi">
   <div class="section-head">
     <div class="eyebrow">Run The Numbers</div>
     <h2 class="section-title">Your revenue, <span class="gradient">rewritten by AI.</span></h2>
-    <p class="section-sub">Slide your current metrics. Watch what AI Kab does to them.</p>
+    <p class="section-sub">Slide your current metrics. Watch an estimate of what AI Kab could do to them.</p>
   </div>
 
   <div class="roi-grid">
@@ -526,6 +399,7 @@
         <label>Ad spend ($/mo) <span id="v-ads">$4,500</span></label>
         <input type="range" id="s-ads" min="0" max="100000" step="500" value="4500" />
       </div>
+      <p class="roi-disclaimer">Estimates only. Actual results depend on your business, industry, and implementation scope.</p>
     </div>
 
     <div class="roi-output">
@@ -535,7 +409,7 @@
         <div class="kpi-bar"><span id="b-current" style="width:40%"></span></div>
       </div>
       <div class="kpi glass featured">
-        <div class="kpi-label">With AI Kab (12 mo)</div>
+        <div class="kpi-label">Estimated with AI Kab</div>
         <div class="kpi-num gradient" id="k-future">$231,168</div>
         <div class="kpi-bar"><span id="b-future" style="width:85%"></span></div>
         <div class="kpi-delta" id="k-delta">+ $96,768 / mo • +72%</div>
@@ -554,7 +428,7 @@
   <div class="section-head">
     <div class="eyebrow">Industries We Serve</div>
     <h2 class="section-title">Every industry. <span class="gradient">One AI brain.</span></h2>
-    <p class="section-sub">AI Kab understands the nuances of your vertical — pricing models, sales cycles, compliance requirements. Hover any card.</p>
+    <p class="section-sub">AI Kab understands the nuances of your vertical — pricing models, sales cycles, compliance requirements. Swipe or tap.</p>
   </div>
 
   <div class="tgal-wrap">
@@ -698,74 +572,6 @@
   </div>
 </section>
 
-<!-- AI BEFORE / AFTER -->
-<section id="results" class="results">
-  <div class="section-head">
-    <div class="eyebrow">See The Shift</div>
-    <h2 class="section-title">Before AI Kab. <span class="gradient">After AI Kab.</span></h2>
-    <p class="section-sub">Drag the slider. Watch a typical Monday transform into a fully-optimized one.</p>
-  </div>
-
-  <div class="ba-wrap">
-    <div class="ba" id="ba">
-      <div class="ba-panel ba-before">
-        <div class="ba-label">Before</div>
-        <div class="ba-schedule">
-          <div class="slot empty">9:00 — lead form unread</div>
-          <div class="slot">9:30 — manual follow-up call</div>
-          <div class="slot empty">10:00 — prospect ghosted ❌</div>
-          <div class="slot empty">10:30 — updating spreadsheets</div>
-          <div class="slot">11:00 — client meeting</div>
-          <div class="slot empty">11:30 — missed callback ❌</div>
-          <div class="slot empty">12:00 — lunch</div>
-          <div class="slot empty">1:00 — writing email copy</div>
-          <div class="slot">1:30 — discovery call</div>
-          <div class="slot empty">2:00 — lead went cold ❌</div>
-          <div class="slot empty">2:30 — ad review</div>
-          <div class="slot">3:00 — proposal sent</div>
-          <div class="slot empty">3:30 — data entry</div>
-          <div class="slot empty">4:00 — catching up on tickets</div>
-        </div>
-        <div class="ba-stats">
-          <div><b>Low</b> team utilization</div>
-          <div><b>Many</b> lost leads</div>
-          <div><b>Missed</b> revenue</div>
-        </div>
-      </div>
-      <div class="ba-panel ba-after">
-        <div class="ba-label">After</div>
-        <div class="ba-schedule">
-          <div class="slot full">9:00 — AI qualified 12 leads overnight</div>
-          <div class="slot full">9:30 — 3 meetings auto-booked</div>
-          <div class="slot full">10:00 — AI re-engaged cold prospect</div>
-          <div class="slot full">10:30 — CRM auto-updated</div>
-          <div class="slot full">11:00 — client meeting (AI prepped brief)</div>
-          <div class="slot full">11:30 — AI closed inbound deal via chat</div>
-          <div class="slot full">12:00 — AI running ad optimizations</div>
-          <div class="slot full">1:00 — AI sent 42 personalized emails</div>
-          <div class="slot full">1:30 — discovery call (AI-qualified lead)</div>
-          <div class="slot full">2:00 — AI recovered 2 churning clients</div>
-          <div class="slot full">2:30 — AI A/B testing new campaign</div>
-          <div class="slot full">3:00 — proposal auto-generated &amp; sent</div>
-          <div class="slot full">3:30 — AI triaging support tickets</div>
-          <div class="slot full">4:00 — daily performance report auto-sent</div>
-        </div>
-        <div class="ba-stats">
-          <div><b>High</b> team utilization</div>
-          <div><b>Zero</b> missed leads</div>
-          <div><b>More</b> revenue</div>
-        </div>
-      </div>
-      <div class="ba-handle" id="ba-handle">
-        <div class="ba-handle-line"></div>
-        <div class="ba-handle-knob">
-          <svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- INTEGRATIONS MARQUEE -->
 <section class="integrations">
   <div class="int-head">
@@ -800,33 +606,7 @@
     <div class="stat"><div class="stat-icon-big">⚡</div><div class="stat-label">Always-on AI that never sleeps</div></div>
     <div class="stat"><div class="stat-icon-big">🔗</div><div class="stat-label">Integrates with your existing stack</div></div>
     <div class="stat"><div class="stat-icon-big">🔒</div><div class="stat-label">Enterprise-grade security</div></div>
-    <div class="stat"><div class="stat-icon-big">🚀</div><div class="stat-label">ROI guarantee on every plan</div></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-head">
-    <div class="eyebrow">What Owners Say</div>
-    <h2 class="section-title">The receipts.</h2>
-  </div>
-
-  <div class="t-grid">
-    <article class="t-card glass" data-tilt>
-      <div class="stars">★★★★★</div>
-      <p>"Your success story goes here. As we onboard clients, their real results and quotes will be featured in this section."</p>
-      <div class="t-who"><b>Your Name</b> • Your Company</div>
-    </article>
-    <article class="t-card glass" data-tilt>
-      <div class="stars">★★★★★</div>
-      <p>"We're building our track record one client at a time. Book a strategy call to see a live demo and judge the AI yourself."</p>
-      <div class="t-who"><b>AI Kab Team</b></div>
-    </article>
-    <article class="t-card glass" data-tilt>
-      <div class="stars">★★★★★</div>
-      <p>"Want to be our next case study? Every plan comes with an ROI guarantee — if it doesn't pay for itself, we work free."</p>
-      <div class="t-who"><a href="#contact" style="color:var(--rose)">Book a call →</a></div>
-    </article>
+    <div class="stat"><div class="stat-icon-big">🚀</div><div class="stat-label">Purpose-built for your business</div></div>
   </div>
 </section>
 
@@ -835,7 +615,7 @@
   <div class="section-head">
     <div class="eyebrow">Investment</div>
     <h2 class="section-title">Pick your <span class="gradient">growth tier.</span></h2>
-    <p class="section-sub">Every plan includes our ROI guarantee — if AI Kab doesn't pay for itself in 90 days, we work free until it does.</p>
+    <p class="section-sub">Pricing is scoped to your business size, integrations, and automation depth — we'll walk through it on the strategy call.</p>
   </div>
 
   <div class="price-grid">
@@ -850,7 +630,7 @@
         <li>1 integration</li>
         <li>Email support</li>
       </ul>
-      <a href="#contact" class="btn btn-ghost magnetic"><span>Start with Launch</span></a>
+      <a href="#book" class="btn btn-ghost magnetic" data-cal-link><span>Start with Launch</span></a>
     </article>
 
     <article class="price-card feature" data-tilt>
@@ -866,7 +646,7 @@
         <li>Unlimited integrations</li>
         <li>Dedicated strategist</li>
       </ul>
-      <a href="#contact" class="btn btn-primary magnetic"><span>Start with Growth</span>
+      <a href="#book" class="btn btn-primary magnetic" data-cal-link><span>Start with Growth</span>
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
       </a>
     </article>
@@ -883,7 +663,7 @@
         <li>Quarterly on-site strategy</li>
         <li>24/7 priority support</li>
       </ul>
-      <a href="#contact" class="btn btn-ghost magnetic"><span>Talk to Empire</span></a>
+      <a href="#book" class="btn btn-ghost magnetic" data-cal-link><span>Talk to Empire</span></a>
     </article>
   </div>
 </section>
@@ -908,7 +688,7 @@
         <span>Is my data secure?</span>
         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
       </summary>
-      <div class="faq-body">Yes. All data is stored in encrypted, audited infrastructure with role-based access controls. Your data is never used to train public AI models. SOC 2 Type II attestation in progress, and we support HIPAA, GDPR, and CCPA compliance requirements.</div>
+      <div class="faq-body">Yes. All data is stored in encrypted, audited infrastructure with role-based access controls. Your data is never used to train public AI models. We support HIPAA, GDPR, and CCPA compliance requirements.</div>
     </details>
     <details class="faq-item">
       <summary>
@@ -922,7 +702,7 @@
         <span>What if my team hates it?</span>
         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
       </summary>
-      <div class="faq-body">They won't. AI Kab handles the repetitive work (data entry, follow-ups, scheduling, FAQ) so your team can do the high-value work they were hired for. We've yet to have a team ask for it to be turned off.</div>
+      <div class="faq-body">They won't. AI Kab handles the repetitive work (data entry, follow-ups, scheduling, FAQ) so your team can do the high-value work they were hired for.</div>
     </details>
     <details class="faq-item">
       <summary>
@@ -931,67 +711,37 @@
       </summary>
       <div class="faq-body">No. We integrate with Salesforce, HubSpot, Shopify, Stripe, Zendesk, Slack, and 100+ other platforms. If your tool has an API, we'll connect it — usually within hours.</div>
     </details>
-    <details class="faq-item">
-      <summary>
-        <span>What's the ROI guarantee?</span>
-        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
-      </summary>
-      <div class="faq-body">If AI Kab doesn't recover its own monthly fee within the agreed timeline, we work for free until it does. We stand behind our product — ask us about the specifics on the strategy call.</div>
-    </details>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact">
-  <div class="contact-inner glass">
-    <div class="contact-left">
-      <div class="eyebrow">Ready when you are</div>
-      <h2>Let's install the AI advantage <span class="gradient">in your business.</span></h2>
-      <p>Free strategy call. We'll map your revenue leaks and show you exactly where AI Kab can make the biggest impact.</p>
-      <ul class="contact-bullets">
-        <li><span>✓</span> No long-term contracts</li>
-        <li><span>✓</span> Live in 14 days</li>
-        <li><span>✓</span> ROI guarantee or we work free</li>
-      </ul>
+<!-- BOOK / CALENDLY -->
+<section id="book" class="book">
+  <div class="section-head">
+    <div class="eyebrow">Ready when you are</div>
+    <h2 class="section-title">Let's install the AI advantage <span class="gradient">in your business.</span></h2>
+    <p class="section-sub">Pick a time that works for you. Free strategy call — we'll map your revenue leaks and show you exactly where AI Kab can make the biggest impact.</p>
+  </div>
+
+  <div class="book-wrap">
+    <ul class="book-bullets">
+      <li><span>✓</span> No long-term contracts</li>
+      <li><span>✓</span> 30-minute strategy call</li>
+      <li><span>✓</span> Walk away with a clear action plan</li>
+    </ul>
+
+    <div class="calendly-wrap glass">
+      <div class="calendly-inline-widget" id="calendly-embed" data-url="" style="min-width:320px;"></div>
+
+      <noscript>
+        <p style="text-align:center; padding:2rem;">
+          <a class="btn btn-primary" id="calendly-fallback" href="#" target="_blank" rel="noopener">Open Calendly to book</a>
+        </p>
+      </noscript>
     </div>
-    <form class="contact-form" id="contact-form" data-email="mansi.agarwal@crystalgroup.in" novalidate>
-      <div class="field">
-        <label>Your name</label>
-        <input required type="text" name="name" placeholder="Jane Smith" />
-      </div>
-      <div class="field">
-        <label>Company name</label>
-        <input required type="text" name="spa" placeholder="Acme Corp" />
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input required type="email" name="email" placeholder="jane@company.com" />
-      </div>
-      <div class="field">
-        <label>Phone (optional)</label>
-        <input type="tel" name="phone" placeholder="(555) 123-4567" />
-      </div>
-      <div class="field">
-        <label>Monthly revenue range</label>
-        <select name="range">
-          <option>Under $50k</option>
-          <option>$50k – $150k</option>
-          <option selected>$150k – $500k</option>
-          <option>$500k+</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>What's your biggest bottleneck? (optional)</label>
-        <textarea name="message" rows="3" placeholder="E.g., losing leads after hours, manual follow-ups…"></textarea>
-      </div>
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-      <button type="submit" class="btn btn-primary btn-lg magnetic" id="form-submit">
-        <span class="fs-label">Claim my Strategy Call</span>
-        <span class="fs-spinner" aria-hidden="true"></span>
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
-      </button>
-      <div class="form-note" id="form-note"></div>
-    </form>
+
+    <a class="book-direct" id="calendly-direct" href="#" target="_blank" rel="noopener">
+      Or open Calendly in a new tab →
+    </a>
   </div>
 </section>
 
@@ -1006,24 +756,23 @@
       <h5>Product</h5>
       <a href="#services">Services</a>
       <a href="#demo">Live AI</a>
-      <a href="#dashboard">Dashboard</a>
       <a href="#roi">ROI Calculator</a>
+      <a href="#industries">Industries</a>
     </div>
     <div class="foot-col">
       <h5>Company</h5>
-      <a href="#results">Results</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="#book" data-cal-link>Book a Call</a>
     </div>
     <div class="foot-col">
       <h5>Contact</h5>
-      <a href="mailto:hello@aikab.com">hello@aikab.com</a>
-      <a href="tel:+18885550199">+1 (888) 555-0199</a>
+      <a href="mailto:mansi.agarwal@crystalgroup.in">mansi.agarwal@crystalgroup.in</a>
+      <a href="#book" data-cal-link>Schedule a call</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <div>© <span id="year"></span> AI Kab, Inc. All rights reserved.</div>
+    <div>© <span id="year"></span> AI Kab. All rights reserved.</div>
     <div>Crafted for growth. Powered by AI.</div>
   </div>
 </footer>
@@ -1050,6 +799,10 @@
     setTimeout(hideLoader, 3500);
   })();
 </script>
+
+<!-- Calendly widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
