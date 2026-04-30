@@ -1733,23 +1733,30 @@ input, select, textarea { font-family: inherit; }
   border: 1px solid var(--glass-brd);
   background: rgba(255,255,255,0.04);
   cursor: pointer;
+  position: relative;
+  z-index: 210;
 }
 .nav-toggle span {
   width: 20px; height: 2px;
   background: var(--ink);
   border-radius: 2px;
   transition: transform 0.3s var(--ease), opacity 0.3s;
+  pointer-events: none;
 }
 @media (max-width: 900px) {
-  .nav-toggle { display: flex; }
+  .nav-toggle { display: flex !important; }
+}
+@media (min-width: 901px) {
+  .nav-toggle { display: none !important; }
 }
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-drawer {
-  position: fixed; inset: 0;
-  z-index: 200;
+  position: fixed !important;
+  inset: 0;
+  z-index: 9000 !important;
   pointer-events: none;
   visibility: hidden;
 }
@@ -1773,6 +1780,7 @@ input, select, textarea { font-family: inherit; }
   transform: translateX(100%);
   transition: transform 0.4s var(--ease);
   box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+  overflow-y: auto;
 }
 .mobile-drawer.open .md-panel { transform: translateX(0); }
 .md-panel a {
@@ -1805,6 +1813,7 @@ input, select, textarea { font-family: inherit; }
   border: 1px solid var(--glass-brd);
   color: var(--ink);
   cursor: pointer;
+  z-index: 1;
 }
 .md-close svg { width: 18px; height: 18px; }
 
@@ -1885,9 +1894,10 @@ body::after {
   opacity: 0.7;
 }
 
-/* Lift content above background layers */
+/* Lift content above background layers (do NOT include .mobile-drawer
+   or .nav/.side-nav/.floating-cta — they have their own fixed positioning). */
 .hero, .problem, .solution, .features, .results, .how, .cta,
-.nav, .footer, .side-nav, .floating-cta, .mobile-drawer { position: relative; z-index: 2; }
+.footer { position: relative; z-index: 2; }
 
 /* ----- Refined nav ----- */
 .nav.scrolled {
