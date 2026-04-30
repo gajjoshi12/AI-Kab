@@ -50,12 +50,68 @@
   <a href="#cta" data-section="cta"><span></span><em>Book</em></a>
 </aside>
 
+<!-- Morphing background blobs (shape-shift on scroll) -->
+<div class="morph-bg" aria-hidden="true">
+  <svg viewBox="0 0 600 600" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="morphGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f9c6d1"/>
+        <stop offset="50%" stop-color="#e6c188"/>
+        <stop offset="100%" stop-color="#8fc5ff"/>
+      </linearGradient>
+      <filter id="morphBlur"><feGaussianBlur stdDeviation="40"/></filter>
+    </defs>
+    <path id="morph-path" d="M421,318Q393,386,322,418Q251,450,179,419Q107,388,86,309Q65,230,116,164Q167,98,243,86Q319,74,377,124Q435,174,438,237Q441,300,421,318Z" fill="url(#morphGrad)" filter="url(#morphBlur)" opacity="0.55"/>
+  </svg>
+</div>
+
 <!-- Floating CTA (mobile-friendly) -->
 <a href="#cta" class="floating-cta" data-cal-link>
   <span class="fc-dot"></span>
   <span class="fc-label">Book a Demo</span>
   <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
 </a>
+
+<!-- AI Chatbot (KABZ assistant) -->
+<div class="kabz-bot" id="kabz-bot" aria-live="polite">
+  <button class="kbot-launcher" id="kbot-launcher" aria-label="Open KABZ assistant">
+    <span class="kbot-pulse"></span>
+    <svg class="kbot-icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg class="kbot-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="kbot-panel" role="dialog" aria-label="AI KABZ assistant">
+    <div class="kbot-head">
+      <div class="kbot-avatar">
+        <svg viewBox="0 0 40 40"><defs><linearGradient id="kbotG" x1="0" x2="1"><stop offset="0" stop-color="#f9c6d1"/><stop offset="1" stop-color="#7bb7ff"/></linearGradient></defs><circle cx="20" cy="20" r="18" fill="url(#kbotG)"/></svg>
+      </div>
+      <div class="kbot-id">
+        <div class="kbot-name">KABZ <span class="kbot-status"><i></i>online</span></div>
+        <div class="kbot-role">Always-on assistant</div>
+      </div>
+      <button class="kbot-min" id="kbot-min" aria-label="Minimise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+      </button>
+    </div>
+    <div class="kbot-body" id="kbot-body">
+      <div class="kbot-msg bot">
+        <p>Hi 👋 I'm KABZ — your AI assistant. Ask me anything or pick a quick option below.</p>
+      </div>
+    </div>
+    <div class="kbot-chips">
+      <button class="kbot-chip" data-q="services">What do you do?</button>
+      <button class="kbot-chip" data-q="contact">Contact details</button>
+      <button class="kbot-chip" data-q="pricing">Pricing</button>
+      <button class="kbot-chip" data-q="address">Office address</button>
+      <button class="kbot-chip" data-q="demo">Book a demo</button>
+    </div>
+    <form class="kbot-input" id="kbot-form">
+      <input id="kbot-text" type="text" placeholder="Type a message…" autocomplete="off" />
+      <button type="submit" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 12l16-8-6 16-2-7-8-1z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 
 <!-- Navigation -->
 <header class="nav">

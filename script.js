@@ -162,38 +162,11 @@ function initHero3D() {
   });
 }
 
-/* ---------- GSAP scroll reveals ---------- */
+/* ---------- GSAP scroll effects (hero parallax only;
+   cascade reveals are handled by the IntersectionObserver below) ---------- */
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.utils.toArray('.section-head').forEach(h => {
-    gsap.from(h.children, {
-      y: 40, opacity: 0, duration: 1, stagger: 0.12, ease: 'power3.out',
-      scrollTrigger: { trigger: h, start: 'top 85%' }
-    });
-  });
-
-  gsap.from('.problem-item', {
-    y: 50, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out',
-    scrollTrigger: { trigger: '.problem-list', start: 'top 80%' }
-  });
-
-  gsap.from('.feature-card', {
-    y: 60, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out',
-    scrollTrigger: { trigger: '.features-grid', start: 'top 80%' }
-  });
-
-  gsap.from('.result-card', {
-    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-    scrollTrigger: { trigger: '.results-grid', start: 'top 85%' }
-  });
-
-  gsap.from('.how-step', {
-    y: 50, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out',
-    scrollTrigger: { trigger: '.how-steps', start: 'top 85%' }
-  });
-
-  // Subtle hero parallax
   gsap.to('.hero-inner', {
     y: -60, ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
@@ -322,6 +295,224 @@ document.querySelectorAll('.problem-item, .feature-card, .how-step, .result-card
     .how-step:hover::after, .result-card.glass:hover::after { opacity: 1; }
   `;
   document.head.appendChild(style);
+})();
+
+/* ---------- Morphing background blob (shape-shifts on scroll) ---------- */
+(function morphBg() {
+  const path = document.getElementById('morph-path');
+  const wrap = document.querySelector('.morph-bg');
+  if (!path) return;
+
+  // Pre-baked organic blob shapes — one per major scroll milestone.
+  const shapes = [
+    'M421,318Q393,386,322,418Q251,450,179,419Q107,388,86,309Q65,230,116,164Q167,98,243,86Q319,74,377,124Q435,174,438,237Q441,300,421,318Z',
+    'M455,300Q425,375,355,408Q285,441,212,420Q139,399,98,330Q57,261,98,184Q139,107,221,82Q303,57,371,108Q439,159,455,229Q471,299,455,300Z',
+    'M409,335Q379,400,303,422Q227,444,156,416Q85,388,75,308Q65,228,123,170Q181,112,261,92Q341,72,395,135Q449,198,438,266Q427,334,409,335Z',
+    'M433,310Q420,385,346,422Q272,459,193,432Q114,405,87,326Q60,247,113,177Q166,107,247,85Q328,63,388,118Q448,173,452,236Q456,299,433,310Z',
+    'M395,325Q375,395,302,425Q229,455,160,420Q91,385,80,305Q69,225,124,162Q179,99,259,82Q339,65,400,122Q461,179,452,252Q443,325,395,325Z',
+  ];
+  const colors = [
+    ['#f9c6d1', '#e6c188', '#8fc5ff'],
+    ['#ffd1dc', '#b3d8ff', '#f9c6d1'],
+    ['#e6c188', '#f9c6d1', '#b3d8ff'],
+    ['#8fc5ff', '#f9c6d1', '#e6c188'],
+    ['#f9c6d1', '#8fc5ff', '#ffe9c7'],
+  ];
+  const stops = document.querySelectorAll('#morphGrad stop');
+
+  let cur = 0;
+  function pickShape() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    const idx = Math.min(shapes.length - 1, Math.floor(p * shapes.length));
+    if (idx !== cur) {
+      cur = idx;
+      path.setAttribute('d', shapes[idx]);
+      if (stops.length === 3 && colors[idx]) {
+        stops[0].setAttribute('stop-color', colors[idx][0]);
+        stops[1].setAttribute('stop-color', colors[idx][1]);
+        stops[2].setAttribute('stop-color', colors[idx][2]);
+      }
+    }
+    if (wrap) {
+      const tx = Math.sin(p * Math.PI * 2) * 6;
+      const ty = p * 8;
+      const rot = p * 30;
+      wrap.style.transform = `translate3d(${tx}%, ${ty}%, 0) rotate(${rot}deg)`;
+    }
+  }
+  pickShape();
+  window.addEventListener('scroll', pickShape, { passive: true });
+})();
+
+/* ---------- Cascading scroll reveals (blur-up + stagger) ---------- */
+(function cascadeReveals() {
+  // Tag every major group as a cascade-stagger and individual section heads as cascade.
+  const staggerGroups = [
+    '.problem-list',
+    '.features-grid',
+    '.results-grid',
+    '.how-steps',
+  ];
+  staggerGroups.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) el.classList.add('cascade-stagger');
+  });
+  document.querySelectorAll('.section-head, .solution-inner, .cta-inner, .features-cta').forEach(el => {
+    el.classList.add('cascade');
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.cascade, .cascade-stagger').forEach(el => obs.observe(el));
+})();
+
+/* ---------- KABZ AI Chatbot ---------- */
+(function kabzBot() {
+  const bot = document.getElementById('kabz-bot');
+  const launcher = document.getElementById('kbot-launcher');
+  const minBtn = document.getElementById('kbot-min');
+  const body = document.getElementById('kbot-body');
+  const form = document.getElementById('kbot-form');
+  const input = document.getElementById('kbot-text');
+  if (!bot || !launcher || !body) return;
+
+  const COMPANY = {
+    name: 'AI Kabz Limited',
+    email: 'vin@aikabz.com',
+    address: '12 Yew Tree Walk, Frimley, Camberley, GU16 8LG, England',
+    company_no: '17183858',
+    calendly: window.AIKAB_CALENDLY_URL || '#cta',
+  };
+
+  const ANSWERS = {
+    services: [
+      "We build AI systems that turn missed enquiries into booked clients — automatically.",
+      "Our core systems: AI WhatsApp Booking, Missed Call Recovery, AI Receptionist, Automated Follow-Ups, Reactivation Campaigns, and Conversion Optimisation.",
+      "Want to see it run for your business? Just type <b>demo</b> and I'll get you booked in."
+    ],
+    contact: [
+      `📧 Email: <a href="mailto:${COMPANY.email}">${COMPANY.email}</a>`,
+      `🏢 ${COMPANY.name}`,
+      `📍 ${COMPANY.address}`,
+      `Registered in England and Wales · Company No. ${COMPANY.company_no}`
+    ],
+    pricing: [
+      "Pricing is scoped to your business size, channels, and integration depth.",
+      "Most clients start with a Demo — we walk you through the leak points in your enquiry flow and quote based on outcomes, not seats.",
+      "Type <b>demo</b> to book a 30-minute call."
+    ],
+    address: [
+      `🏢 <b>${COMPANY.name}</b>`,
+      `📍 ${COMPANY.address}`,
+      `Company No. ${COMPANY.company_no} · Registered in England and Wales`
+    ],
+    demo: [
+      "Perfect — let's get you booked in.",
+      `Tap here to open the calendar: <a href="${COMPANY.calendly}" target="_blank" rel="noopener">Book a Demo</a>`,
+      "30 minutes. No pressure. You'll walk away with a clear plan."
+    ],
+    email: [
+      `Easiest way to reach us: <a href="mailto:${COMPANY.email}">${COMPANY.email}</a>`
+    ],
+    hours: [
+      "Our AI systems run 24/7 for your clients.",
+      "Our human team is UK-based — we typically reply to enquiries within a few hours during working hours."
+    ],
+    fallback: [
+      "Great question — I'd love to dig in deeper on a quick call.",
+      `You can email us at <a href="mailto:${COMPANY.email}">${COMPANY.email}</a> or type <b>demo</b> to book a slot.`
+    ]
+  };
+
+  function classify(q) {
+    const s = q.toLowerCase();
+    if (/\b(demo|book|appointment|call|meeting|schedule)\b/.test(s)) return 'demo';
+    if (/\b(address|office|where|located|location|hq|headquarters)\b/.test(s)) return 'address';
+    if (/\b(email|reach|contact|phone|number)\b/.test(s)) return 'contact';
+    if (/\b(price|pricing|cost|how much|fee|fees|quote)\b/.test(s)) return 'pricing';
+    if (/\b(service|services|do|offer|product|features|what)\b/.test(s)) return 'services';
+    if (/\b(hours|open|when|available|time)\b/.test(s)) return 'hours';
+    return 'fallback';
+  }
+
+  function addMsg(html, who = 'bot') {
+    const div = document.createElement('div');
+    div.className = `kbot-msg ${who}`;
+    div.innerHTML = `<p>${html}</p>`;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const t = document.createElement('div');
+    t.className = 'kbot-msg bot typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(t);
+    body.scrollTop = body.scrollHeight;
+    return t;
+  }
+
+  async function respond(q) {
+    addMsg(q, 'user');
+    const kind = classify(q);
+    const lines = ANSWERS[kind] || ANSWERS.fallback;
+    for (const line of lines) {
+      const t = addTyping();
+      await new Promise(r => setTimeout(r, 600 + Math.random() * 400));
+      t.remove();
+      addMsg(line, 'bot');
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+
+  function open() { bot.classList.add('open'); setTimeout(() => input && input.focus(), 350); }
+  function close() { bot.classList.remove('open'); }
+
+  launcher.addEventListener('click', () => bot.classList.contains('open') ? close() : open());
+  minBtn && minBtn.addEventListener('click', close);
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (!q) return;
+    input.value = '';
+    respond(q);
+  });
+
+  document.querySelectorAll('.kbot-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      const key = c.dataset.q;
+      // Use the chip label as the user's "spoken" question
+      addMsg(c.textContent, 'user');
+      (async () => {
+        const lines = ANSWERS[key] || ANSWERS.fallback;
+        for (const line of lines) {
+          const t = addTyping();
+          await new Promise(r => setTimeout(r, 500 + Math.random() * 350));
+          t.remove();
+          addMsg(line, 'bot');
+          await new Promise(r => setTimeout(r, 180));
+        }
+      })();
+    });
+  });
+
+  // Auto-open invitation after 12s if user hasn't engaged
+  setTimeout(() => {
+    if (!bot.classList.contains('open') && !sessionStorage.getItem('kbot-seen')) {
+      launcher.classList.add('kbot-bounce');
+      sessionStorage.setItem('kbot-seen', '1');
+    }
+  }, 12000);
 })();
 
 /* ---------- Book a Demo (Calendly) ---------- */
