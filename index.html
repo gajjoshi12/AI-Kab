@@ -398,8 +398,97 @@
       <span>Book a Demo</span>
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
     </a>
+
+    <div class="cta-divider"><span>or send us a message</span></div>
+
+    <form id="contact-form" class="contact-form glass" autocomplete="on" novalidate>
+      <input type="hidden" name="access_key" value="8f7fd544-8d75-49e0-8a45-69bd62f2f28a" />
+      <input type="hidden" name="subject" value="New enquiry from aikabz.com" />
+      <input type="hidden" name="from_name" value="AI KABZ Website" />
+      <input type="checkbox" name="botcheck" class="cf-honeypot" tabindex="-1" autocomplete="off" />
+
+      <div class="cf-row">
+        <label class="cf-field">
+          <span>Company name</span>
+          <input type="text" name="company" required maxlength="120" autocomplete="organization" />
+        </label>
+        <label class="cf-field">
+          <span>Your name</span>
+          <input type="text" name="name" required maxlength="120" autocomplete="name" />
+        </label>
+      </div>
+
+      <div class="cf-row">
+        <label class="cf-field">
+          <span>Email</span>
+          <input type="email" name="email" required maxlength="160" autocomplete="email" />
+        </label>
+        <label class="cf-field">
+          <span>Phone <em>(optional)</em></span>
+          <input type="tel" name="phone" maxlength="40" autocomplete="tel" />
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary cf-submit">
+        <span class="cf-submit-label">Send message</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+      </button>
+      <div class="cf-status" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </section>
+
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = form.querySelector('.cf-status');
+  var btn = form.querySelector('.cf-submit');
+  var label = form.querySelector('.cf-submit-label');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (btn.disabled) return;
+
+    status.textContent = '';
+    status.className = 'cf-status';
+
+    if (!form.reportValidity()) return;
+
+    btn.disabled = true;
+    btn.classList.add('is-loading');
+    if (label) label.textContent = 'Sending…';
+
+    var data = new FormData(form);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then(function (res) { return res.json().then(function (j) { return { ok: res.ok, json: j }; }); })
+      .then(function (r) {
+        if (r.ok && r.json && r.json.success) {
+          status.textContent = 'Thanks — we’ll be in touch shortly.';
+          status.classList.add('ok');
+          form.reset();
+        } else {
+          status.textContent = (r.json && r.json.message) || 'Sorry, something went wrong. Please try again.';
+          status.classList.add('err');
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Network error. Please try again, or email vin@aikabz.com.';
+        status.classList.add('err');
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        if (label) label.textContent = 'Send message';
+      });
+  });
+})();
+</script>
 
 <!-- FOOTER -->
 <footer class="footer">

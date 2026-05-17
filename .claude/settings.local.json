@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($py = Get-Command python -ErrorAction SilentlyContinue; $magick = Get-Command magick -ErrorAction SilentlyContinue; if \\($py\\) { \"python: $\\($py.Source\\)\" } else { \"python: NOT FOUND\" }; if \\($magick\\) { \"magick: $\\($magick.Source\\)\" } else { \"magick: NOT FOUND\" })",
+      "PowerShell($src = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\image.png'; $logo = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.png'; $ico = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.ico'; & magick $src '\\(' '+clone' '-colorspace' 'Gray' '-level' '30%,70%' '-negate' '\\)' '-compose' 'CopyOpacity' '-composite' $logo; if \\($LASTEXITCODE -eq 0\\) { \"logo.png written \\($\\(\\(Get-Item $logo\\).Length\\) bytes\\)\" } else { \"logo.png FAILED \\($LASTEXITCODE\\)\" }; & magick $logo -background none -gravity center -resize 256x256 -extent 256x256 -define 'icon:auto-resize=256,128,64,48,32,16' $ico; if \\($LASTEXITCODE -eq 0\\) { \"logo.ico written \\($\\(\\(Get-Item $ico\\).Length\\) bytes\\)\" } else { \"logo.ico FAILED \\($LASTEXITCODE\\)\" })",
+      "PowerShell($logo = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.png'; & magick $logo -background '#070510' -alpha remove -alpha off \"$env:TEMP\\\\logo-on-dark.png\"; \"$env:TEMP\\\\logo-on-dark.png\"; & magick identify $logo)",
+      "Read(//c/Users/Gaj/AppData/Local/Temp/**)",
+      "PowerShell(& magick $src -format \"Top-left pixel: %[pixel:p{0,0}]`nCenter pixel:   %[pixel:p{w/2,h/2}]`nDims: %wx%h`n\" info:)",
+      "PowerShell($src = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\image.png')",
+      "PowerShell($logo = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.png')",
+      "PowerShell(& magick $logo -format \"logo center: %[pixel:p{w/2,h/2}]`nlogo top-left: %[pixel:p{0,0}]`nAlpha channel: %A`n\" info:)",
+      "PowerShell($src = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\image.png'; $logo = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.png'; $ico = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.ico'; & magick $src -alpha set -bordercolor '#edebe8' -border 1 -fuzz 22% -fill none -floodfill +0+0 '#edebe8' -shave 1x1 $logo; if \\($LASTEXITCODE -ne 0\\) { \"logo.png FAILED \\($LASTEXITCODE\\)\"; exit 1 }; & magick $logo -trim +repage $logo; \"logo.png: $\\(\\(Get-Item $logo\\).Length\\) bytes\"; & magick $logo -format \"center: %[pixel:p{w/2,h/2}]`ntop-left: %[pixel:p{0,0}]`ndims: %wx%h`n\" info:; & magick $logo -background none -gravity center -resize 256x256 -extent 256x256 -define 'icon:auto-resize=256,128,64,48,32,16' $ico; \"logo.ico: $\\(\\(Get-Item $ico\\).Length\\) bytes\")",
+      "PowerShell($logo = 'c:\\\\Users\\\\Gaj\\\\Desktop\\\\Coding-Projects\\\\AI-Kab\\\\logo.png'; & magick $logo -background '#070510' -alpha remove -alpha off -resize 400x \"$env:TEMP\\\\logo-on-dark.png\"; \"$env:TEMP\\\\logo-on-dark.png\")",
+      "Bash(git -C \"c:/Users/Gaj/Desktop/Coding-Projects/AI-Kab\" status --short logo.png logo.ico)",
+      "Bash(git -C \"c:/Users/Gaj/Desktop/Coding-Projects/AI-Kab\" log --oneline -5 -- logo.png logo.ico)",
+      "Bash(git -C \"c:/Users/Gaj/Desktop/Coding-Projects/AI-Kab\" checkout -- logo.png logo.ico)"
+    ]
+  }
+}
