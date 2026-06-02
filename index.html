@@ -788,92 +788,146 @@
     }
 
     /* iPhone frame */
-    .iphone {
-      width: 220px;
-      height: 440px;
-      background: linear-gradient(160deg, #2c2c2e, #1c1c1e);
-      border-radius: 46px;
-      position: relative;
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, .12),
-        0 32px 80px rgba(0, 0, 0, .35),
-        0 0 0 8px #111,
-        0 0 0 9px #2a2a2a;
-      border: 1.5px solid #3a3a3c;
+    /* iPhone wrapper — slight 3-D tilt for depth */
+    .iphone-wrap {
+      perspective: 900px;
       flex-shrink: 0;
-      /* entrance animation */
+      /* entrance */
       opacity: 0;
-      transform: translateY(40px) scale(.94);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
+      transform: translateY(44px) scale(.93);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
     }
-
-    .iphone.visible {
+    .iphone-wrap.visible {
       opacity: 1;
       transform: none;
     }
 
+    .iphone {
+      width: 228px;
+      height: 464px;
+      /* flat aluminium-style body: sharp sides, subtle metallic gradient */
+      background: linear-gradient(
+        168deg,
+        #3a3a3c 0%,
+        #242426 28%,
+        #1a1a1c 55%,
+        #222224 80%,
+        #2e2e30 100%
+      );
+      border-radius: 44px;
+      position: relative;
+      /* flat-edge iPhone 15 style: no outer ring, just a fine metallic border */
+      border: 1.5px solid #4a4a4e;
+      box-shadow:
+        /* screen-edge highlight */
+        inset 0 1.5px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.6),
+        inset 1px 0 0 rgba(255,255,255,.06),
+        inset -1px 0 0 rgba(0,0,0,.4),
+        /* ambient drop shadow */
+        0 40px 80px rgba(0,0,0,.45),
+        0 16px 32px rgba(0,0,0,.25),
+        /* subtle teal glow from the app */
+        0 0 60px rgba(6,105,128,.12);
+      transform-style: preserve-3d;
+      /* tilt: slight Y rotation + small X for a natural desk-lean */
+      transform: rotateY(-10deg) rotateX(3deg);
+      transition: transform .4s var(--ease), box-shadow .4s;
+      flex-shrink: 0;
+    }
+    .iphone-wrap:hover .iphone {
+      transform: rotateY(-4deg) rotateX(1deg);
+      box-shadow:
+        inset 0 1.5px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.6),
+        inset 1px 0 0 rgba(255,255,255,.06),
+        inset -1px 0 0 rgba(0,0,0,.4),
+        0 48px 100px rgba(0,0,0,.5),
+        0 20px 40px rgba(0,0,0,.3),
+        0 0 80px rgba(6,105,128,.18);
+    }
+
+    /* flat aluminium side buttons */
     .iphone::before {
       content: '';
       position: absolute;
-      left: -2.5px;
-      top: 95px;
-      width: 2.5px;
-      height: 32px;
-      background: #3a3a3c;
-      border-radius: 2px 0 0 2px;
-      box-shadow: 0 44px 0 #3a3a3c;
+      left: -2px;
+      top: 100px;
+      width: 2px;
+      height: 28px;
+      background: linear-gradient(180deg, #5a5a5e, #3a3a3c);
+      box-shadow: 0 40px 0 linear-gradient(180deg, #5a5a5e, #3a3a3c), 0 72px 0 #3a3a3c;
+      border-radius: 1px 0 0 1px;
     }
-
+    /* Volume buttons via pseudo — stacked using box-shadow */
+    .iphone::before {
+      left: -2px;
+      top: 100px;
+      width: 2px;
+      height: 26px;
+      background: #4a4a4e;
+      border-radius: 1px 0 0 1px;
+      box-shadow:
+        0 38px 0 #4a4a4e,
+        0 72px 0 #4a4a4e;
+    }
     .iphone::after {
       content: '';
       position: absolute;
-      right: -2.5px;
-      top: 124px;
-      width: 2.5px;
-      height: 54px;
-      background: #3a3a3c;
-      border-radius: 0 2px 2px 0;
+      right: -2px;
+      top: 130px;
+      width: 2px;
+      height: 52px;
+      background: #4a4a4e;
+      border-radius: 0 1px 1px 0;
     }
 
+    /* screen inset — slightly recessed from body edge */
     .iphone-screen {
       position: absolute;
-      top: 6px;
-      left: 6px;
-      right: 6px;
-      bottom: 6px;
-      border-radius: 40px;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 39px;
       overflow: hidden;
       background: #000;
+      /* subtle inner shadow to look recessed */
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.8);
     }
 
+    /* Dynamic Island */
     .iphone-island {
       position: absolute;
-      top: 13px;
+      top: 11px;
       left: 50%;
       transform: translateX(-50%);
-      width: 82px;
-      height: 22px;
+      width: 88px;
+      height: 24px;
       background: #000;
-      border-radius: 11px;
+      border-radius: 12px;
       z-index: 20;
+      /* pill shadow to look cut-in */
+      box-shadow: 0 0 0 1.5px #111, 0 2px 8px rgba(0,0,0,.6);
     }
 
+    /* home indicator */
     .iphone-home {
       position: absolute;
-      bottom: 7px;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 90px;
-      height: 5px;
-      background: rgba(255, 255, 255, .35);
-      border-radius: 3px;
+      width: 88px;
+      height: 4px;
+      background: rgba(255,255,255,.28);
+      border-radius: 2px;
       z-index: 20;
     }
 
     .iphone-content {
       position: absolute;
       inset: 0;
-      border-radius: 40px;
+      border-radius: 39px;
       overflow: hidden;
     }
 
@@ -1596,13 +1650,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-chat">
+        <div class="iphone-wrap" id="phone-chat"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-chat"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1621,13 +1676,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-followup">
+        <div class="iphone-wrap" id="phone-followup"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-followup"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1646,13 +1702,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-voice">
+        <div class="iphone-wrap" id="phone-voice"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-voice"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1671,13 +1728,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-support">
+        <div class="iphone-wrap" id="phone-support"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-support"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1696,13 +1754,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-reputation">
+        <div class="iphone-wrap" id="phone-reputation"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-reputation"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1721,13 +1780,14 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone" id="phone-analytics">
+        <div class="iphone-wrap" id="phone-analytics"><div class="iphone">
           <div class="iphone-screen">
             <div class="iphone-island"></div>
             <div class="iphone-content" id="screen-analytics"></div>
             <div class="iphone-home"></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
