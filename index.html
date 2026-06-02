@@ -815,19 +815,32 @@
           #2e2e30 100%);
       border-radius: 44px;
       position: relative;
-      /* flat-edge iPhone 15 style: no outer ring, just a fine metallic border */
-      border: 1.5px solid #4a4a4e;
+      /* metallic shiny band — simulated with a conic/linear gradient border */
+      border: none;
+      background-clip: padding-box;
+      outline: 2.5px solid transparent;
+      background-image:
+        linear-gradient(168deg, #3a3a3c 0%, #242426 28%, #1a1a1c 55%, #222224 80%, #2e2e30 100%);
       box-shadow:
-        /* screen-edge highlight */
-        inset 0 1.5px 0 rgba(255, 255, 255, .18),
-        inset 0 -1px 0 rgba(0, 0, 0, .6),
-        inset 1px 0 0 rgba(255, 255, 255, .06),
-        inset -1px 0 0 rgba(0, 0, 0, .4),
+        /* metallic ring: bright highlight top-left, dark bottom-right */
+        0 0 0 1px #1a1a1c,
+        0 0 0 2.5px #6e6e72,
+        0 0 0 3px #8a8a8e,
+        0 0 0 3.5px #c8c8cc,
+        0 0 0 4px #e8e8ec,
+        0 0 0 4.5px #b0b0b4,
+        0 0 0 5.5px #686868,
+        0 0 0 6.5px #2a2a2c,
+        /* inner edge refinement */
+        inset 0 1.5px 0 rgba(255,255,255,.22),
+        inset 0 -1px 0 rgba(0,0,0,.7),
+        inset 1px 0 0 rgba(255,255,255,.08),
+        inset -1px 0 0 rgba(0,0,0,.5),
         /* ambient drop shadow */
-        0 40px 80px rgba(0, 0, 0, .45),
-        0 16px 32px rgba(0, 0, 0, .25),
-        /* subtle teal glow from the app */
-        0 0 60px rgba(6, 105, 128, .12);
+        0 40px 80px rgba(0,0,0,.5),
+        0 16px 32px rgba(0,0,0,.28),
+        /* teal app glow */
+        0 0 60px rgba(6,105,128,.14);
       transform-style: preserve-3d;
       /* tilt: slight Y rotation + small X for a natural desk-lean */
       transform: rotateY(-10deg) rotateX(3deg);
@@ -838,13 +851,21 @@
     .iphone-wrap:hover .iphone {
       transform: rotateY(-4deg) rotateX(1deg);
       box-shadow:
-        inset 0 1.5px 0 rgba(255, 255, 255, .18),
-        inset 0 -1px 0 rgba(0, 0, 0, .6),
-        inset 1px 0 0 rgba(255, 255, 255, .06),
-        inset -1px 0 0 rgba(0, 0, 0, .4),
-        0 48px 100px rgba(0, 0, 0, .5),
-        0 20px 40px rgba(0, 0, 0, .3),
-        0 0 80px rgba(6, 105, 128, .18);
+        0 0 0 1px #1a1a1c,
+        0 0 0 2.5px #6e6e72,
+        0 0 0 3px #9a9a9e,
+        0 0 0 3.5px #d8d8dc,
+        0 0 0 4px #f0f0f4,
+        0 0 0 4.5px #c0c0c4,
+        0 0 0 5.5px #787878,
+        0 0 0 6.5px #2a2a2c,
+        inset 0 1.5px 0 rgba(255,255,255,.22),
+        inset 0 -1px 0 rgba(0,0,0,.7),
+        inset 1px 0 0 rgba(255,255,255,.08),
+        inset -1px 0 0 rgba(0,0,0,.5),
+        0 48px 100px rgba(0,0,0,.55),
+        0 20px 40px rgba(0,0,0,.3),
+        0 0 80px rgba(6,105,128,.2);
     }
 
     /* flat aluminium side buttons */
@@ -899,18 +920,116 @@
     }
 
     /* Dynamic Island */
+    /* ── Dynamic Island base ── */
     .iphone-island {
       position: absolute;
-      top: 11px;
-      left: 50%;
+      top: 11px; left: 50%;
       transform: translateX(-50%);
-      width: 88px;
-      height: 24px;
+      height: 26px;
       background: #000;
-      border-radius: 12px;
+      border-radius: 13px;
       z-index: 20;
-      /* pill shadow to look cut-in */
-      box-shadow: 0 0 0 1.5px #111, 0 2px 8px rgba(0, 0, 0, .6);
+      box-shadow: 0 0 0 1.5px #111, 0 2px 10px rgba(0,0,0,.7);
+      display: flex; align-items: center; gap: 5px;
+      padding: 0 9px; overflow: hidden;
+      width: 108px;
+    }
+    /* shared: left indicator dot */
+    .isl-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    }
+    .isl-dot-green  { background:#34c759; box-shadow:0 0 5px 2px rgba(52,199,89,.8); animation:dotPulse 1.8s ease-in-out infinite; }
+    .isl-dot-orange { background:#ff9f0a; box-shadow:0 0 5px 2px rgba(255,159,10,.8); animation:dotPulse 2s ease-in-out infinite; }
+    .isl-dot-teal   { background:#066980; box-shadow:0 0 5px 2px rgba(6,105,128,.9); animation:dotPulse 1.6s ease-in-out infinite; }
+    .isl-dot-yellow { background:#ffd60a; box-shadow:0 0 5px 2px rgba(255,214,10,.8); animation:dotPulse 2.2s ease-in-out infinite; }
+    @keyframes dotPulse {
+      0%,100%{opacity:1;} 50%{opacity:.4;}
+    }
+
+    /* ── 1. Chat: typing dots ── */
+    .isl-typing { display:flex; gap:3px; align-items:center; }
+    .isl-typing i { display:block; width:5px; height:5px; border-radius:50%; background:#066980; animation:typDot 1s ease-in-out infinite; }
+    .isl-typing i:nth-child(2){animation-delay:.18s;}
+    .isl-typing i:nth-child(3){animation-delay:.36s;}
+    @keyframes typDot {
+      0%,60%,100%{transform:translateY(0);opacity:.4;}
+      30%{transform:translateY(-4px);opacity:1;}
+    }
+
+    /* ── 2. Follow-up: notification badge ── */
+    .isl-badge {
+      background:#ff3b30; color:#fff; font-size:8px; font-weight:700;
+      min-width:13px; height:13px; border-radius:7px; display:flex; align-items:center;
+      justify-content:center; padding:0 3px; animation:badgePop .4s cubic-bezier(.2,.9,.3,1.4) both;
+      font-family:var(--sans);
+    }
+    @keyframes badgePop{from{transform:scale(0);}to{transform:scale(1);}}
+    .isl-env { font-size:11px; animation:envShake 3s ease-in-out infinite; }
+    @keyframes envShake {
+      0%,90%,100%{transform:rotate(0deg);}
+      92%{transform:rotate(-12deg);}
+      96%{transform:rotate(12deg);}
+    }
+
+    /* ── 3. Voice: live call waveform ── */
+    .isl-wave { display:flex; align-items:center; gap:2px; height:14px; }
+    .isl-wave b {
+      display:block; width:3px; border-radius:2px; background:#34c759;
+      animation:voiceBar 0.7s ease-in-out infinite alternate;
+    }
+    .isl-wave b:nth-child(1){height:4px; animation-delay:0s;}
+    .isl-wave b:nth-child(2){height:10px;animation-delay:.1s;}
+    .isl-wave b:nth-child(3){height:14px;animation-delay:.2s;}
+    .isl-wave b:nth-child(4){height:8px; animation-delay:.3s;}
+    .isl-wave b:nth-child(5){height:4px; animation-delay:.4s;}
+    @keyframes voiceBar {
+      from{transform:scaleY(.3);}
+      to{transform:scaleY(1);}
+    }
+
+    /* ── 4. Support: resolving tick + AI label ── */
+    .isl-resolve { display:flex; align-items:center; animation:tickIn .5s cubic-bezier(.2,.9,.3,1.4) both; }
+    @keyframes tickIn{from{transform:scale(0) rotate(-90deg);}to{transform:scale(1) rotate(0deg);}}
+    .isl-resolve svg { animation:tickSpin 4s linear infinite; }
+    @keyframes tickSpin {
+      0%,80%,100%{transform:none;} 85%{transform:rotate(360deg);}
+    }
+    .isl-ai {
+      font-size:8px; font-weight:700; color:#066980; letter-spacing:.06em;
+      font-family:var(--mono); animation:aiFlicker 2s ease-in-out infinite;
+    }
+    @keyframes aiFlicker {
+      0%,90%,100%{opacity:1;} 95%{opacity:.2;}
+    }
+
+    /* ── 5. Reputation: star + score ── */
+    .isl-star {
+      font-size:13px; color:#ffd60a; line-height:1;
+      animation:starGlow 2s ease-in-out infinite;
+      text-shadow: 0 0 6px rgba(255,214,10,.8);
+    }
+    @keyframes starGlow {
+      0%,100%{text-shadow:0 0 6px rgba(255,214,10,.8);}
+      50%{text-shadow:0 0 14px rgba(255,214,10,1),0 0 24px rgba(255,214,10,.4);}
+    }
+    .isl-score {
+      font-size:9px; font-weight:700; color:#fff; font-family:var(--mono);
+    }
+
+    /* ── 6. Analytics: score bars ── */
+    .isl-bars { display:flex; align-items:flex-end; gap:2px; height:14px; }
+    .isl-bars s {
+      display:block; width:4px; border-radius:1px 1px 0 0; background:#066980;
+      text-decoration:none; animation:barRise 1.4s ease-in-out infinite alternate;
+    }
+    .isl-bars s:nth-child(1){height:5px; animation-delay:0s;}
+    .isl-bars s:nth-child(2){height:9px; animation-delay:.15s;}
+    .isl-bars s:nth-child(3){height:14px;animation-delay:.3s; background:#34c759;}
+    .isl-bars s:nth-child(4){height:7px; animation-delay:.45s;}
+    .isl-bars s:nth-child(5){height:11px;animation-delay:.6s;}
+    @keyframes barRise {
+      from{opacity:.4;transform:scaleY(.4);}
+      to{opacity:1;transform:scaleY(1);}
     }
 
     /* home indicator */
@@ -1654,7 +1773,7 @@
         <div class="iphone-wrap" id="phone-chat">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-chat"><span class="isl-dot isl-dot-green"></span><span class="isl-typing"><i></i><i></i><i></i></span></div>
               <div class="iphone-content" id="screen-chat"></div>
               <div class="iphone-home"></div>
             </div>
@@ -1681,7 +1800,7 @@
         <div class="iphone-wrap" id="phone-followup">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-followup"><span class="isl-dot isl-dot-orange"></span><span class="isl-badge">3</span><span class="isl-env">✉</span></div>
               <div class="iphone-content" id="screen-followup"></div>
               <div class="iphone-home"></div>
             </div>
@@ -1708,7 +1827,7 @@
         <div class="iphone-wrap" id="phone-voice">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-voice"><span class="isl-dot isl-dot-green"></span><span class="isl-wave"><b></b><b></b><b></b><b></b><b></b></span></div>
               <div class="iphone-content" id="screen-voice"></div>
               <div class="iphone-home"></div>
             </div>
@@ -1735,7 +1854,7 @@
         <div class="iphone-wrap" id="phone-support">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-support"><span class="isl-dot isl-dot-teal"></span><span class="isl-resolve"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span><span class="isl-ai">AI</span></div>
               <div class="iphone-content" id="screen-support"></div>
               <div class="iphone-home"></div>
             </div>
@@ -1762,7 +1881,7 @@
         <div class="iphone-wrap" id="phone-reputation">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-reputation"><span class="isl-dot isl-dot-yellow"></span><span class="isl-star">★</span><span class="isl-score">4.8</span></div>
               <div class="iphone-content" id="screen-reputation"></div>
               <div class="iphone-home"></div>
             </div>
@@ -1789,7 +1908,7 @@
         <div class="iphone-wrap" id="phone-analytics">
           <div class="iphone">
             <div class="iphone-screen">
-              <div class="iphone-island"></div>
+              <div class="iphone-island island-analytics"><span class="isl-dot isl-dot-teal"></span><span class="isl-bars"><s></s><s></s><s></s><s></s><s></s></span></div>
               <div class="iphone-content" id="screen-analytics"></div>
               <div class="iphone-home"></div>
             </div>
