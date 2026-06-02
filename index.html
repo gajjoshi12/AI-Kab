@@ -797,6 +797,7 @@
       transform: translateY(44px) scale(.93);
       transition: opacity .75s var(--ease), transform .75s var(--ease);
     }
+
     .iphone-wrap.visible {
       opacity: 1;
       transform: none;
@@ -806,45 +807,44 @@
       width: 228px;
       height: 464px;
       /* flat aluminium-style body: sharp sides, subtle metallic gradient */
-      background: linear-gradient(
-        168deg,
-        #3a3a3c 0%,
-        #242426 28%,
-        #1a1a1c 55%,
-        #222224 80%,
-        #2e2e30 100%
-      );
+      background: linear-gradient(168deg,
+          #3a3a3c 0%,
+          #242426 28%,
+          #1a1a1c 55%,
+          #222224 80%,
+          #2e2e30 100%);
       border-radius: 44px;
       position: relative;
       /* flat-edge iPhone 15 style: no outer ring, just a fine metallic border */
       border: 1.5px solid #4a4a4e;
       box-shadow:
         /* screen-edge highlight */
-        inset 0 1.5px 0 rgba(255,255,255,.18),
-        inset 0 -1px 0 rgba(0,0,0,.6),
-        inset 1px 0 0 rgba(255,255,255,.06),
-        inset -1px 0 0 rgba(0,0,0,.4),
+        inset 0 1.5px 0 rgba(255, 255, 255, .18),
+        inset 0 -1px 0 rgba(0, 0, 0, .6),
+        inset 1px 0 0 rgba(255, 255, 255, .06),
+        inset -1px 0 0 rgba(0, 0, 0, .4),
         /* ambient drop shadow */
-        0 40px 80px rgba(0,0,0,.45),
-        0 16px 32px rgba(0,0,0,.25),
+        0 40px 80px rgba(0, 0, 0, .45),
+        0 16px 32px rgba(0, 0, 0, .25),
         /* subtle teal glow from the app */
-        0 0 60px rgba(6,105,128,.12);
+        0 0 60px rgba(6, 105, 128, .12);
       transform-style: preserve-3d;
       /* tilt: slight Y rotation + small X for a natural desk-lean */
       transform: rotateY(-10deg) rotateX(3deg);
       transition: transform .4s var(--ease), box-shadow .4s;
       flex-shrink: 0;
     }
+
     .iphone-wrap:hover .iphone {
       transform: rotateY(-4deg) rotateX(1deg);
       box-shadow:
-        inset 0 1.5px 0 rgba(255,255,255,.18),
-        inset 0 -1px 0 rgba(0,0,0,.6),
-        inset 1px 0 0 rgba(255,255,255,.06),
-        inset -1px 0 0 rgba(0,0,0,.4),
-        0 48px 100px rgba(0,0,0,.5),
-        0 20px 40px rgba(0,0,0,.3),
-        0 0 80px rgba(6,105,128,.18);
+        inset 0 1.5px 0 rgba(255, 255, 255, .18),
+        inset 0 -1px 0 rgba(0, 0, 0, .6),
+        inset 1px 0 0 rgba(255, 255, 255, .06),
+        inset -1px 0 0 rgba(0, 0, 0, .4),
+        0 48px 100px rgba(0, 0, 0, .5),
+        0 20px 40px rgba(0, 0, 0, .3),
+        0 0 80px rgba(6, 105, 128, .18);
     }
 
     /* flat aluminium side buttons */
@@ -859,6 +859,7 @@
       box-shadow: 0 40px 0 linear-gradient(180deg, #5a5a5e, #3a3a3c), 0 72px 0 #3a3a3c;
       border-radius: 1px 0 0 1px;
     }
+
     /* Volume buttons via pseudo — stacked using box-shadow */
     .iphone::before {
       left: -2px;
@@ -871,6 +872,7 @@
         0 38px 0 #4a4a4e,
         0 72px 0 #4a4a4e;
     }
+
     .iphone::after {
       content: '';
       position: absolute;
@@ -893,7 +895,7 @@
       overflow: hidden;
       background: #000;
       /* subtle inner shadow to look recessed */
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.8);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .8);
     }
 
     /* Dynamic Island */
@@ -908,7 +910,7 @@
       border-radius: 12px;
       z-index: 20;
       /* pill shadow to look cut-in */
-      box-shadow: 0 0 0 1.5px #111, 0 2px 8px rgba(0,0,0,.6);
+      box-shadow: 0 0 0 1.5px #111, 0 2px 8px rgba(0, 0, 0, .6);
     }
 
     /* home indicator */
@@ -919,7 +921,7 @@
       transform: translateX(-50%);
       width: 88px;
       height: 4px;
-      background: rgba(255,255,255,.28);
+      background: rgba(255, 255, 255, .28);
       border-radius: 2px;
       z-index: 20;
     }
@@ -1562,7 +1564,7 @@
   <!-- ────────────────── FEATURES ────────────────── -->
   <section class="section" id="features">
     <div class="wrap">
-      <div class="sec-num">What ships in the box</div>
+      <!-- <div class="sec-num">What ships in the box</div> -->
       <h2 class="sec-h reveal">A real AI teammate —<em> not a chatbot.</em></h2>
       <div class="features reveal">
         <div class="feat">
@@ -1615,12 +1617,11 @@
         </div>
         <div class="split-copy">
           <div class="sec-num">Trained on YOUR business</div>
-          <h2 class="sec-h" style="margin-bottom:0;">The AI knows your services, your policies, your prices —<em>
-              because
-              your AI Kabz grounds every reply.</em></h2>
-          <p>Pick your vertical and the platform self-configures: persona, voice agent, starter services, starter
-            campaigns, brand tone. Every nudge and reply is grounded in YOUR own content — never a generic
-            chatbot answer.</p>
+          <h2 class="sec-h" style="margin-bottom:0;">The AI knows your services, your policies, your prices —<em> and
+              only ever answers from that.</em></h2>
+          <p>Tell us what kind of business you run and AIKABZ sets itself up — your services, your prices, your tone.
+            Every message it sends and every question it answers comes straight from your own information. It never
+            guesses or makes things up.</p>
         </div>
       </div>
     </div>
@@ -1631,16 +1632,16 @@
     <div class="demos-intro wrap reveal">
       <div class="sec-tag">Live Demos</div>
       <h2>Watch it work —<em> in real time</em></h2>
-      <p>Scroll through each demo. The iPhone plays automatically as it enters view and keeps looping while you read.
+      <p>Scroll through each demo.
       </p>
     </div>
 
     <!-- Demo 1: AI Front Desk / Chat -->
     <div class="demo-row" data-demo="chat">
       <div class="demo-copy reveal">
-        <div class="sec-num">01 · Kabby AI Front Desk</div>
+        <div class="sec-num">01 · AI Kabz AI Front Desk</div>
         <h3 class="demo-name">Instant AI responses,<em> around the clock</em></h3>
-        <p class="demo-desc">Kabby handles every inbound enquiry across WhatsApp, Instagram DMs, email, and more —
+        <p class="demo-desc">AI Kabz handles every inbound enquiry across WhatsApp, Instagram DMs, email, and more —
           qualifying leads, answering questions, and booking slots in under 3 seconds.</p>
         <ul class="demo-bullets">
           <li>Responds across 7+ channels simultaneously</li>
@@ -1650,14 +1651,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-chat"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-chat"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-chat">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-chat"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -1676,14 +1678,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-followup"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-followup"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-followup">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-followup"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -1702,14 +1705,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-voice"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-voice"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-voice">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-voice"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -1728,14 +1732,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-support"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-support"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-support">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-support"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -1754,14 +1759,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-reputation"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-reputation"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-reputation">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-reputation"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 
@@ -1780,14 +1786,15 @@
         </ul>
       </div>
       <div class="demo-phone-panel">
-        <div class="iphone-wrap" id="phone-analytics"><div class="iphone">
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="iphone-content" id="screen-analytics"></div>
-            <div class="iphone-home"></div>
+        <div class="iphone-wrap" id="phone-analytics">
+          <div class="iphone">
+            <div class="iphone-screen">
+              <div class="iphone-island"></div>
+              <div class="iphone-content" id="screen-analytics"></div>
+              <div class="iphone-home"></div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </section>
@@ -2039,7 +2046,7 @@
       <div style="position:absolute;inset:0;background:#000;display:flex;flex-direction:column;">
         <div style="background:#1c1c1e;padding:46px 10px 8px;display:flex;align-items:center;gap:7px;border-bottom:1px solid #2a2a2c;flex-shrink:0;">
           <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3F7A66,#2E5C4D);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;">🤖</div>
-          <div><div style="font-size:11.5px;font-weight:700;color:#fff;">Kabby AI</div><div style="font-size:9.5px;color:#34d399;">● Online</div></div>
+          <div><div style="font-size:11.5px;font-weight:700;color:#fff;">AI Kabz</div><div style="font-size:9.5px;color:#34d399;">● Online</div></div>
           <div id="${id}-t" style="margin-left:auto;font-size:10px;color:#636366;font-variant-numeric:tabular-nums;">0:00</div>
         </div>
         <div id="chat-msgs"></div>
