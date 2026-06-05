@@ -1857,6 +1857,20 @@
       transform: scale(.985);
       transition: transform .05s;
     }
+
+    /* ── Language switcher ─────────────────────────────────────────── */
+    .lang-pill {
+      display: inline-flex; align-items: center; gap: 3px;
+      background: none; border: 1px solid var(--line-2); border-radius: 8px;
+      padding: 4px 9px; font-family: var(--mono); font-size: 9px;
+      letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+      color: var(--muted-2);
+      transition: border-color .2s, color .2s, background .2s;
+      flex-shrink: 0;
+    }
+    .lang-pill:hover { border-color: var(--accent); background: var(--accent-3); color: var(--accent); }
+    .lang-pill .lp-sep { opacity: .35; }
+    .lang-pill .lp-on  { color: var(--accent); font-weight: 600; }
   </style>
 </head>
 
@@ -1868,13 +1882,14 @@
       <img src="logo-new.png" alt="AIKABZ" style="height:32px;width:auto;display:block;">
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#demos">Live Demos</a>
-      <a href="#results">Results</a>
+      <a href="#features" data-i18n="nav-features">Features</a>
+      <a href="#demos" data-i18n="nav-demos">Live Demos</a>
+      <a href="#results" data-i18n="nav-results">Results</a>
 
     </div>
     <div class="nav-cta">
-      <a href="#cta" class="btn btn-solid">Book A Demo</a>
+      <button class="lang-pill" id="lang-pill" onclick="toggleLang()" aria-label="Switch language"><span class="lp-on" id="lp-en">EN</span><span class="lp-sep">·</span><span id="lp-es">ES</span></button>
+      <a href="#cta" class="btn btn-solid" data-i18n="nav-cta">Book A Demo</a>
     </div>
   </nav>
 
@@ -1886,10 +1901,10 @@
     </div>
     <div class="hero-body">
       <div class="hero-meta">
-        <span class="mono">— AI Front Desk · Every Service Business</span>
+        <span class="mono" data-i18n="hero-meta">— AI Front Desk · Every Service Business</span>
         <span class="mono">MMXXVI · v1</span>
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-i18n-hero="true">
         <span class="ch" style="animation-delay:.02s">S</span><span class="ch"
           style="animation-delay:.05s">t</span><span class="ch" style="animation-delay:.08s">o</span><span class="ch"
           style="animation-delay:.11s">p</span>
@@ -1909,10 +1924,10 @@
       </h1>
       <div class="hero-foot" style="border-top:none;padding-top:0;">
         <div>
-          <p
+          <p data-i18n="hero-sub-1"
             style="font-size:clamp(26px,3.4vw,42px);font-weight:400;color:#F4F1EA;line-height:1.2;margin-bottom:20px;font-family:var(--serif);">
             Start converting more customers.</p>
-          <p class="reveal"
+          <p class="reveal" data-i18n-html="hero-sub-2"
             style="font-size:clamp(15px,1.6vw,19px);color:rgba(244,241,234,.72);line-height:1.7;max-width:520px;">AIKABZ
             helps businesses <strong style="color:#F4F1EA;">respond instantly</strong>, follow up automatically, and
             turn more enquiries into paying customers.</p>
@@ -1923,21 +1938,21 @@
 
   <!-- ────────────────── VERTICALS STRIP ────────────────── -->
   <div class="strip">
-    <div class="strip-label">Built for any service business</div>
+    <div class="strip-label" data-i18n="strip-label">Built for any service business</div>
     <div class="strip-track">
       <div class="strip-row" id="strip-row">
-        <span class="strip-item">Real Estate</span>
-        <span class="strip-item">Restaurants</span>
-        <span class="strip-item">Salons</span>
-        <span class="strip-item">Fitness Studios</span>
-        <span class="strip-item">Law Firms</span>
-        <span class="strip-item">Agencies</span>
-        <span class="strip-item">Home Services</span>
-        <span class="strip-item">Med Spas</span>
-        <span class="strip-item">Photography</span>
-        <span class="strip-item">Wellness</span>
-        <span class="strip-item">Auto</span>
-        <span class="strip-item">Clinics</span>
+        <span class="strip-item" data-i18n="strip-real-estate">Real Estate</span>
+        <span class="strip-item" data-i18n="strip-restaurants">Restaurants</span>
+        <span class="strip-item" data-i18n="strip-salons">Salons</span>
+        <span class="strip-item" data-i18n="strip-fitness">Fitness Studios</span>
+        <span class="strip-item" data-i18n="strip-law">Law Firms</span>
+        <span class="strip-item" data-i18n="strip-agencies">Agencies</span>
+        <span class="strip-item" data-i18n="strip-home">Home Services</span>
+        <span class="strip-item" data-i18n="strip-medspas">Med Spas</span>
+        <span class="strip-item" data-i18n="strip-photo">Photography</span>
+        <span class="strip-item" data-i18n="strip-wellness">Wellness</span>
+        <span class="strip-item" data-i18n="strip-auto">Auto</span>
+        <span class="strip-item" data-i18n="strip-clinics">Clinics</span>
       </div>
     </div>
   </div>
@@ -1946,42 +1961,42 @@
   <section class="section" id="features">
     <div class="wrap">
       <!-- <div class="sec-num">What ships in the box</div> -->
-      <h2 class="sec-h reveal">A real AI teammate —<em> not a chatbot.</em></h2>
+      <h2 class="sec-h reveal" data-i18n-html="feat-h">A real AI teammate —<em> not a chatbot.</em></h2>
       <div class="features reveal">
         <div class="feat">
-          <div class="feat-k">01 · AI Front Desk</div>
-          <div class="feat-name">Never misses a customer</div>
-          <p class="feat-desc">Answers WhatsApp, Instagram, LinkedIn, Messenger, email, and SMS like a real teammate.
+          <div class="feat-k" data-i18n="feat-1-k">01 · AI Front Desk</div>
+          <div class="feat-name" data-i18n="feat-1-name">Never misses a customer</div>
+          <p class="feat-desc" data-i18n="feat-1-desc">Answers WhatsApp, Instagram, LinkedIn, Messenger, email, and SMS like a real teammate.
             Knows your services, KB, and hours.</p>
         </div>
         <div class="feat">
-          <div class="feat-k">02 · Real-Time Booking</div>
-          <div class="feat-name">Books while you sleep</div>
-          <p class="feat-desc">Proposes real available slots from your calendar. Books, reschedules, and cancels from
+          <div class="feat-k" data-i18n="feat-2-k">02 · Real-Time Booking</div>
+          <div class="feat-name" data-i18n="feat-2-name">Books while you sleep</div>
+          <p class="feat-desc" data-i18n="feat-2-desc">Proposes real available slots from your calendar. Books, reschedules, and cancels from
             the chat — single approval.</p>
         </div>
         <div class="feat">
-          <div class="feat-k">03 · Voice AI</div>
-          <div class="feat-name">24/7 phone teammate</div>
-          <p class="feat-desc">Answers, qualifies, and books on every call. Every call recorded, transcribed, scored,
+          <div class="feat-k" data-i18n="feat-3-k">03 · Voice AI</div>
+          <div class="feat-name" data-i18n="feat-3-name">24/7 phone teammate</div>
+          <p class="feat-desc" data-i18n="feat-3-desc">Answers, qualifies, and books on every call. Every call recorded, transcribed, scored,
             and routed intelligently.</p>
         </div>
         <div class="feat">
-          <div class="feat-k">04 · Unified Inbox</div>
-          <div class="feat-name">All channels, one inbox</div>
-          <p class="feat-desc">Every conversation across every channel in one place. AI runs the front desk by default —
+          <div class="feat-k" data-i18n="feat-4-k">04 · Unified Inbox</div>
+          <div class="feat-name" data-i18n="feat-4-name">All channels, one inbox</div>
+          <p class="feat-desc" data-i18n="feat-4-desc">Every conversation across every channel in one place. AI runs the front desk by default —
             flip to human with one toggle.</p>
         </div>
         <div class="feat">
-          <div class="feat-k">05 · Knowledge-Grounded</div>
-          <div class="feat-name">Knows your business inside out</div>
-          <p class="feat-desc">Pricing, policies, services, FAQs. The AI never invents what it does not know — grounded
+          <div class="feat-k" data-i18n="feat-5-k">05 · Knowledge-Grounded</div>
+          <div class="feat-name" data-i18n="feat-5-name">Knows your business inside out</div>
+          <p class="feat-desc" data-i18n="feat-5-desc">Pricing, policies, services, FAQs. The AI never invents what it does not know — grounded
             in your knowledge base.</p>
         </div>
         <div class="feat">
-          <div class="feat-k">06 · Retention Engine</div>
+          <div class="feat-k" data-i18n="feat-6-k">06 · Retention Engine</div>
           <div class="feat-name">Win-backs & referrals</div>
-          <p class="feat-desc">Automated win-backs, AI lead scoring, and a referral engine that turns happy customers
+          <p class="feat-desc" data-i18n="feat-6-desc">Automated win-backs, AI lead scoring, and a referral engine that turns happy customers
             into your top growth channel.</p>
         </div>
       </div>
@@ -1997,10 +2012,10 @@
             loading="lazy">
         </div>
         <div class="split-copy">
-          <div class="sec-num">Trained on YOUR business</div>
-          <h2 class="sec-h" style="margin-bottom:0;">The AI knows your services, your policies, your prices —<em> and
+          <div class="sec-num" data-i18n="split-num">Trained on YOUR business</div>
+          <h2 class="sec-h" data-i18n-html="split-h" style="margin-bottom:0;">The AI knows your services, your policies, your prices —<em> and
               only ever answers from that.</em></h2>
-          <p>Tell us what kind of business you run and AI Kabz sets itself up — your services, your prices, your tone.
+          <p data-i18n="split-p">Tell us what kind of business you run and AI Kabz sets itself up — your services, your prices, your tone.
             Every message it sends and every question it answers comes straight from your own information. It never
             guesses or makes things up.</p>
         </div>
@@ -2011,24 +2026,24 @@
   <!-- ────────────────── LIVE DEMOS (scroll-triggered) ────────────────── -->
   <section id="demos">
     <div class="demos-intro wrap reveal">
-      <div class="sec-tag">Live Demos</div>
-      <h2>Watch it work —<em> in real time</em></h2>
-      <p>Scroll through each demo.
+      <div class="sec-tag" data-i18n="demos-tag">Live Demos</div>
+      <h2 data-i18n-html="demos-h">Watch it work —<em> in real time</em></h2>
+      <p data-i18n="demos-p">Scroll through each demo.
       </p>
     </div>
 
     <!-- Demo 1: AI Front Desk / Chat -->
     <div class="demo-row" data-demo="chat">
       <div class="demo-copy reveal">
-        <div class="sec-num">01 · AI Kabz AI Front Desk</div>
-        <h3 class="demo-name">AI that responds in seconds, day or night,<em> around the clock</em></h3>
-        <p class="demo-desc">AI Kabz handles every inbound enquiry across WhatsApp, Instagram DMs, email, and more —
+        <div class="sec-num" data-i18n="d1-num">01 · AI Kabz AI Front Desk</div>
+        <h3 class="demo-name" data-i18n-html="d1-name">AI that responds in seconds, day or night,<em> around the clock</em></h3>
+        <p class="demo-desc" data-i18n="d1-desc">AI Kabz handles every inbound enquiry across WhatsApp, Instagram DMs, email, and more —
           qualifying leads, answering questions, and booking slots in under 3 seconds.</p>
         <ul class="demo-bullets">
-          <li>Responds across 7+ channels simultaneously</li>
-          <li>Qualifies leads with natural conversation</li>
-          <li>Books directly from the chat thread</li>
-          <li>Escalates to human with full context</li>
+          <li data-i18n="d1-b1">Responds across 7+ channels simultaneously</li>
+          <li data-i18n="d1-b2">Qualifies leads with natural conversation</li>
+          <li data-i18n="d1-b3">Books directly from the chat thread</li>
+          <li data-i18n="d1-b4">Escalates to human with full context</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2049,15 +2064,15 @@
     <!-- Demo 2: Smart Follow-Up -->
     <div class="demo-row flip" data-demo="followup">
       <div class="demo-copy reveal">
-        <div class="sec-num">02 · Smart Follow-Up</div>
-        <h3 class="demo-name">Multi-channel nurture,<em> fully automated</em></h3>
-        <p class="demo-desc">Behaviour-triggered sequences fire across email, WhatsApp, and SMS based on what each lead
+        <div class="sec-num" data-i18n="d2-num">02 · Smart Follow-Up</div>
+        <h3 class="demo-name" data-i18n-html="d2-name">Multi-channel nurture,<em> fully automated</em></h3>
+        <p class="demo-desc" data-i18n="d2-desc">Behaviour-triggered sequences fire across email, WhatsApp, and SMS based on what each lead
           actually does — open, click, reply, or go quiet.</p>
         <ul class="demo-bullets">
-          <li>Triggers on open, click, and no-reply</li>
-          <li>Adapts channel based on engagement</li>
-          <li>10-touch sequence runs on autopilot</li>
-          <li>Books demos when intent is detected</li>
+          <li data-i18n="d2-b1">Triggers on open, click, and no-reply</li>
+          <li data-i18n="d2-b2">Adapts channel based on engagement</li>
+          <li data-i18n="d2-b3">10-touch sequence runs on autopilot</li>
+          <li data-i18n="d2-b4">Books demos when intent is detected</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2078,15 +2093,15 @@
     <!-- Demo 3: Voice AI -->
     <div class="demo-row" data-demo="voice">
       <div class="demo-copy reveal">
-        <div class="sec-num">03 · Voice AI</div>
-        <h3 class="demo-name">Every call answered,<em> every booking captured</em></h3>
-        <p class="demo-desc">Your AI receptionist answers every inbound call, detects intent, checks live calendar
+        <div class="sec-num" data-i18n="d3-num">03 · Voice AI</div>
+        <h3 class="demo-name" data-i18n-html="d3-name">Every call answered,<em> every booking captured</em></h3>
+        <p class="demo-desc" data-i18n="d3-desc">Your AI receptionist answers every inbound call, detects intent, checks live calendar
           availability, and confirms appointments — no hold music, no missed revenue.</p>
         <ul class="demo-bullets">
-          <li>Answers in under 2 rings, 24/7</li>
-          <li>Detects appointment intent vs general enquiry</li>
-          <li>Books real slots from your live calendar</li>
-          <li>Sends SMS confirmation instantly</li>
+          <li data-i18n="d3-b1">Answers in under 2 rings, 24/7</li>
+          <li data-i18n="d3-b2">Detects appointment intent vs general enquiry</li>
+          <li data-i18n="d3-b3">Books real slots from your live calendar</li>
+          <li data-i18n="d3-b4">Sends SMS confirmation instantly</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2107,15 +2122,15 @@
     <!-- Demo 4: AI Support -->
     <div class="demo-row flip" data-demo="support">
       <div class="demo-copy reveal">
-        <div class="sec-num">04 · AI Support</div>
-        <h3 class="demo-name">80% of tickets resolved<em> in seconds</em></h3>
-        <p class="demo-desc">The AI works through your support queue in real time — resolving password resets, billing
+        <div class="sec-num" data-i18n="d4-num">04 · AI Support</div>
+        <h3 class="demo-name" data-i18n-html="d4-name">80% of tickets resolved<em> in seconds</em></h3>
+        <p class="demo-desc" data-i18n="d4-desc">The AI works through your support queue in real time — resolving password resets, billing
           questions, and FAQs automatically, escalating only what truly needs a human.</p>
         <ul class="demo-bullets">
-          <li>Resolves 70–80% of tickets autonomously</li>
-          <li>Uses your SOPs and FAQ library</li>
-          <li>Priority scoring: high / med / low</li>
-          <li>Escalates edge cases with full context</li>
+          <li data-i18n="d4-b1">Resolves 70–80% of tickets autonomously</li>
+          <li data-i18n="d4-b2">Uses your SOPs and FAQ library</li>
+          <li data-i18n="d4-b3">Priority scoring: high / med / low</li>
+          <li data-i18n="d4-b4">Escalates edge cases with full context</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2139,16 +2154,16 @@
     <!-- Demo 5: Reputation -->
     <div class="demo-row" data-demo="reputation">
       <div class="demo-copy reveal">
-        <div class="sec-num">05 · Reputation Management</div>
-        <h3 class="demo-name">Every review monitored,<em> every reply perfect</em></h3>
-        <p class="demo-desc">AI Kabz watches Google, Yelp, TripAdvisor, and industry-specific platforms. Negative
+        <div class="sec-num" data-i18n="d5-num">05 · Reputation Management</div>
+        <h3 class="demo-name" data-i18n-html="d5-name">Every review monitored,<em> every reply perfect</em></h3>
+        <p class="demo-desc" data-i18n="d5-desc">AI Kabz watches Google, Yelp, TripAdvisor, and industry-specific platforms. Negative
           reviews
           get an instant, empathetic AI response — positive ones get amplified.</p>
         <ul class="demo-bullets">
-          <li>Monitors all major review platforms</li>
-          <li>AI responds to negatives within minutes</li>
-          <li>Weekly sentiment trend reports</li>
-          <li>Surfaces review requests to happy customers</li>
+          <li data-i18n="d5-b1">Monitors all major review platforms</li>
+          <li data-i18n="d5-b2">AI responds to negatives within minutes</li>
+          <li data-i18n="d5-b3">Weekly sentiment trend reports</li>
+          <li data-i18n="d5-b4">Surfaces review requests to happy customers</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2169,15 +2184,15 @@
     <!-- Demo 6: Call Analytics -->
     <div class="demo-row flip" data-demo="analytics" style="margin-bottom:80px;">
       <div class="demo-copy reveal">
-        <div class="sec-num">06 · Call Analytics</div>
-        <h3 class="demo-name">Every sales call scored,<em> every pattern surfaced</em></h3>
-        <p class="demo-desc">AI transcribes, scores, and analyses every sales call — flagging losing patterns, top
+        <div class="sec-num" data-i18n="d6-num">06 · Call Analytics</div>
+        <h3 class="demo-name" data-i18n-html="d6-name">Every sales call scored,<em> every pattern surfaced</em></h3>
+        <p class="demo-desc" data-i18n="d6-desc">AI transcribes, scores, and analyses every sales call — flagging losing patterns, top
           objections, talk-time ratios, and which reps close and which don't.</p>
         <ul class="demo-bullets">
-          <li>Auto-transcription of every call</li>
-          <li>0–100 sales quality score per call</li>
-          <li>Talk-time ratio: rep vs prospect</li>
-          <li>Flags top objections across all calls</li>
+          <li data-i18n="d6-b1">Auto-transcription of every call</li>
+          <li data-i18n="d6-b2">0–100 sales quality score per call</li>
+          <li data-i18n="d6-b3">Talk-time ratio: rep vs prospect</li>
+          <li data-i18n="d6-b4">Flags top objections across all calls</li>
         </ul>
       </div>
       <div class="demo-phone-panel">
@@ -2201,9 +2216,8 @@
     <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=2200&q=80" alt="" loading="lazy">
     <div class="wide-over">
       <div class="wide-inner reveal">
-        <div class="sec-num mono" style="color:rgba(244,241,234,.45);margin-bottom:14px;letter-spacing:.18em;">Calm by
-          default</div>
-        <h2 class="wide-h">No red badges.<em> No busy dashboards.</em><br>Just the next right thing to do.</h2>
+        <div class="sec-num mono" style="color:rgba(244,241,234,.45);margin-bottom:14px;letter-spacing:.18em;"><span data-i18n="wide-num">Calm by default</span></div>
+        <h2 class="wide-h" data-i18n-html="wide-h">No red badges.<em> No busy dashboards.</em><br>Just the next right thing to do.</h2>
       </div>
     </div>
   </div>
@@ -2211,40 +2225,40 @@
   <!-- ────────────────── TESTIMONIALS ────────────────── -->
   <section class="section" id="voices">
     <div class="wrap">
-      <div class="sec-num">02 / 03 · The difference</div>
-      <h2 class="sec-h reveal">What changes when you use AIKABZ.<em> From day one.</em></h2>
+      <div class="sec-num" data-i18n="voices-num">02 / 03 · The difference</div>
+      <h2 class="sec-h reveal" data-i18n-html="voices-h">What changes when you use AIKABZ.<em> From day one.</em></h2>
       <div class="quotes">
         <div class="quote reveal">
           <div
             style="font-family:var(--serif);font-size:48px;line-height:1;color:var(--accent);opacity:.35;margin-bottom:20px;letter-spacing:-.03em;">
             01</div>
-          <p class="q-text" style="font-style:normal;font-size:15px;">Every enquiry gets a reply before your competitor
+          <p class="q-text" data-i18n="q1-text" style="font-style:normal;font-size:15px;">Every enquiry gets a reply before your competitor
             picks up the phone. No more leads going cold because someone was busy with another customer.</p>
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
-            <div class="q-who">Respond in seconds, not hours</div>
-            <div class="q-at" style="margin-top:4px;">Automated instant replies across every channel</div>
+            <div class="q-who" data-i18n="q1-who">Respond in seconds, not hours</div>
+            <div class="q-at" data-i18n="q1-at" style="margin-top:4px;">Automated instant replies across every channel</div>
           </div>
         </div>
         <div class="quote reveal" style="animation-delay:.1s;">
           <div
             style="font-family:var(--serif);font-size:48px;line-height:1;color:var(--accent);opacity:.35;margin-bottom:20px;letter-spacing:-.03em;">
             02</div>
-          <p class="q-text" style="font-style:normal;font-size:15px;">Follow-ups happen automatically — no reminders, no
+          <p class="q-text" data-i18n="q2-text" style="font-style:normal;font-size:15px;">Follow-ups happen automatically — no reminders, no
             spreadsheets, no dropped balls. Every customer gets the right message at exactly the right time.</p>
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
-            <div class="q-who">Follow-ups that never stop</div>
-            <div class="q-at" style="margin-top:4px;">Multi-step sequences running 24/7 on autopilot</div>
+            <div class="q-who" data-i18n="q2-who">Follow-ups that never stop</div>
+            <div class="q-at" data-i18n="q2-at" style="margin-top:4px;">Multi-step sequences running 24/7 on autopilot</div>
           </div>
         </div>
         <div class="quote reveal" style="animation-delay:.2s;">
           <div
             style="font-family:var(--serif);font-size:48px;line-height:1;color:var(--accent);opacity:.35;margin-bottom:20px;letter-spacing:-.03em;">
             03</div>
-          <p class="q-text" style="font-style:normal;font-size:15px;">Your calendar fills itself. Your reviews improve.
+          <p class="q-text" data-i18n="q3-text" style="font-style:normal;font-size:15px;">Your calendar fills itself. Your reviews improve.
             Your revenue grows — without hiring more staff or working longer hours.</p>
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
-            <div class="q-who">More bookings, less effort</div>
-            <div class="q-at" style="margin-top:4px;">Growth that runs while you focus on your work</div>
+            <div class="q-who" data-i18n="q3-who">More bookings, less effort</div>
+            <div class="q-at" data-i18n="q3-at" style="margin-top:4px;">Growth that runs while you focus on your work</div>
           </div>
         </div>
       </div>
@@ -2254,28 +2268,28 @@
   <!-- ────────────────── RESULTS ────────────────── -->
   <section class="section" style="background:var(--s2);padding:72px 0;" id="results">
     <div class="wrap">
-      <div class="sec-num" style="text-align:center;margin-bottom:36px;">03 / 03 · Results · Median numbers, not the
+      <div class="sec-num" data-i18n="res-num" style="text-align:center;margin-bottom:36px;">03 / 03 · Results · Median numbers, not the
         best case</div>
       <div class="results reveal">
         <div class="res-cell">
-          <div class="res-k">+38%</div>
-          <div class="res-l">Revenue lift · first 90 days</div>
-          <div class="res-sub">Median · all verticals</div>
+          <div class="res-k" data-i18n="res-1-k">+38%</div>
+          <div class="res-l" data-i18n="res-1-l">Revenue lift · first 90 days</div>
+          <div class="res-sub" data-i18n="res-1-sub">Median · all verticals</div>
         </div>
         <div class="res-cell">
-          <div class="res-k">&lt;60s</div>
-          <div class="res-l">Lead response time</div>
-          <div class="res-sub">vs 2–4 hour industry avg</div>
+          <div class="res-k" data-i18n="res-2-k">&lt;60s</div>
+          <div class="res-l" data-i18n="res-2-l">Lead response time</div>
+          <div class="res-sub" data-i18n="res-2-sub">vs 2–4 hour industry avg</div>
         </div>
         <div class="res-cell">
-          <div class="res-k">86%</div>
-          <div class="res-l">Support tickets auto-resolved</div>
-          <div class="res-sub">Without human intervention</div>
+          <div class="res-k" data-i18n="res-3-k">86%</div>
+          <div class="res-l" data-i18n="res-3-l">Support tickets auto-resolved</div>
+          <div class="res-sub" data-i18n="res-3-sub">Without human intervention</div>
         </div>
         <div class="res-cell">
-          <div class="res-k">11×</div>
-          <div class="res-l">Median LTV : CAC ratio</div>
-          <div class="res-sub">Category benchmark: 3×</div>
+          <div class="res-k" data-i18n="res-4-k">11×</div>
+          <div class="res-l" data-i18n="res-4-l">Median LTV : CAC ratio</div>
+          <div class="res-sub" data-i18n="res-4-sub">Category benchmark: 3×</div>
         </div>
       </div>
     </div>
@@ -2286,12 +2300,12 @@
   <!-- ────────────────── CTA ────────────────── -->
   <section class="cta-band" id="cta">
     <div class="wrap" style="max-width:760px;">
-      <div class="sec-num" style="text-align:center;margin-bottom:16px;">Begin</div>
-      <h2 class="cta-h reveal">Your next quarter<br><em>starts today.</em></h2>
-      <p class="cta-sub reveal">Most businesses see ROI in 30 days. The only risk is waiting.</p>
+      <div class="sec-num" data-i18n="cta-num" style="text-align:center;margin-bottom:16px;">Begin</div>
+      <h2 class="cta-h reveal" data-i18n-html="cta-h">Your next quarter<br><em>starts today.</em></h2>
+      <p class="cta-sub reveal" data-i18n="cta-sub">Most businesses see ROI in 30 days. The only risk is waiting.</p>
       <div class="cta-row reveal">
-        <button onclick="openCalendly()" class="btn btn-solid btn-lg">Book A Demo</button>
-        <a href="#features" class="btn btn-ghost btn-lg">Explore features</a>
+        <button onclick="openCalendly()" class="btn btn-solid btn-lg" data-i18n="cta-btn">Book A Demo</button>
+        <a href="#features" class="btn btn-ghost btn-lg" data-i18n="cta-explore">Explore features</a>
       </div>
       <!-- Calendly inline embed — hidden until button clicked -->
       <div id="calendly-wrap"
@@ -2306,7 +2320,7 @@
             <path
               d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
           </svg>
-          WhatsApp us
+          <span data-i18n="cta-wa">WhatsApp us</span>
         </a>
         <a href="mailto:support@aikabz.com" class="contact-btn em-btn">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2316,7 +2330,7 @@
           support@aikabz.com
         </a>
       </div>
-      <p class="cta-note reveal" style="margin-top:18px;">No credit card · 20-min call · No obligation</p>
+      <p class="cta-note reveal" data-i18n="cta-note" style="margin-top:18px;">No credit card · 20-min call · No obligation</p>
     </div>
   </section>
 
@@ -2327,28 +2341,28 @@
         <div>
           <a href="#top" class="nav-logo"><img src="logo-new.png" alt="AIKABZ"
               style="height:32px;width:auto;display:block;"></a>
-          <p class="foot-tag">The AI front desk for service businesses. Every conversation, every booking, every
+          <p class="foot-tag" data-i18n="foot-tag">The AI front desk for service businesses. Every conversation, every booking, every
             customer — in one place.</p>
         </div>
         <div class="foot-col">
-          <h4>Navigate</h4>
+          <h4 data-i18n="foot-nav-h">Navigate</h4>
           <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#demos">Live Demos</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#voices">Why AIKABZ</a></li>
+            <li><a href="#features" data-i18n="foot-nav-features">Features</a></li>
+            <li><a href="#demos" data-i18n="foot-nav-demos">Live Demos</a></li>
+            <li><a href="#results" data-i18n="foot-nav-results">Results</a></li>
+            <li><a href="#voices" data-i18n="foot-nav-why">Why AIKABZ</a></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h4>Get Started</h4>
+          <h4 data-i18n="foot-gs-h">Get Started</h4>
           <ul>
-            <li><a href="#cta">Book A Demo</a></li>
+            <li><a href="#cta" data-i18n="foot-gs-demo">Book A Demo</a></li>
             <li><a href="mailto:support@aikabz.com">support@aikabz.com</a></li>
           </ul>
         </div>
       </div>
       <div class="foot-bottom">
-        <span class="foot-copy">© 2026 AIKABZ — built for service businesses</span>
+        <span class="foot-copy" data-i18n="foot-copy">© 2026 AIKABZ — built for service businesses</span>
         <div style="display:flex;gap:10px;align-items:center;">
           <a href="https://www.instagram.com/aikabz.ltd?igsh=dWFqcnNvcjltbXkw" target="_blank" rel="noopener"
             aria-label="Instagram"
@@ -2844,6 +2858,307 @@
         });
       });
 
+    })();
+
+    /* ── Translations ───────────────────────────────────────────────── */
+    (function () {
+      const LANGS = {
+        en: {
+          'nav-features': 'Features',
+          'nav-demos': 'Live Demos',
+          'nav-results': 'Results',
+          'nav-cta': 'Book A Demo',
+
+          'hero-meta': '— AI Front Desk · Every Service Business',
+          'hero-sub-1': 'Start converting more customers.',
+          'hero-sub-2': 'AIKABZ helps businesses <strong style="color:#F4F1EA;">respond instantly</strong>, follow up automatically, and turn more enquiries into paying customers.',
+
+          'strip-label': 'Built for any service business',
+          'strip-real-estate': 'Real Estate', 'strip-restaurants': 'Restaurants',
+          'strip-salons': 'Salons', 'strip-fitness': 'Fitness Studios',
+          'strip-law': 'Law Firms', 'strip-agencies': 'Agencies',
+          'strip-home': 'Home Services', 'strip-medspas': 'Med Spas',
+          'strip-photo': 'Photography', 'strip-wellness': 'Wellness',
+          'strip-auto': 'Auto', 'strip-clinics': 'Clinics',
+
+          'feat-h': 'A real AI teammate —<em> not a chatbot.</em>',
+          'feat-1-k': '01 · AI Front Desk', 'feat-1-name': 'Never misses a customer',
+          'feat-1-desc': 'Answers WhatsApp, Instagram, LinkedIn, Messenger, email, and SMS like a real teammate. Knows your services, KB, and hours.',
+          'feat-2-k': '02 · Real-Time Booking', 'feat-2-name': 'Books while you sleep',
+          'feat-2-desc': 'Proposes real available slots from your calendar. Books, reschedules, and cancels from the chat — single approval.',
+          'feat-3-k': '03 · Voice AI', 'feat-3-name': '24/7 phone teammate',
+          'feat-3-desc': 'Answers, qualifies, and books on every call. Every call recorded, transcribed, scored, and routed intelligently.',
+          'feat-4-k': '04 · Unified Inbox', 'feat-4-name': 'All channels, one inbox',
+          'feat-4-desc': 'Every conversation across every channel in one place. AI runs the front desk by default — flip to human with one toggle.',
+          'feat-5-k': '05 · Knowledge-Grounded', 'feat-5-name': 'Knows your business inside out',
+          'feat-5-desc': 'Pricing, policies, services, FAQs. The AI never invents what it does not know — grounded in your knowledge base.',
+          'feat-6-k': '06 · Retention Engine', 'feat-6-name': 'Win-backs & referrals',
+          'feat-6-desc': 'Automated win-backs, AI lead scoring, and a referral engine that turns happy customers into your top growth channel.',
+
+          'split-num': 'Trained on YOUR business',
+          'split-h': 'The AI knows your services, your policies, your prices —<em> and only ever answers from that.</em>',
+          'split-p': 'Tell us what kind of business you run and AI Kabz sets itself up — your services, your prices, your tone. Every message it sends and every question it answers comes straight from your own information. It never guesses or makes things up.',
+
+          'demos-tag': 'Live Demos',
+          'demos-h': 'Watch it work —<em> in real time</em>',
+          'demos-p': 'Scroll through each demo.',
+
+          'd1-num': '01 · AI Kabz AI Front Desk',
+          'd1-name': 'AI that responds in seconds, day or night,<em> around the clock</em>',
+          'd1-desc': 'AI Kabz handles every inbound enquiry across WhatsApp, Instagram DMs, email, and more — qualifying leads, answering questions, and booking slots in under 3 seconds.',
+          'd1-b1': 'Responds across 7+ channels simultaneously', 'd1-b2': 'Qualifies leads with natural conversation',
+          'd1-b3': 'Books directly from the chat thread', 'd1-b4': 'Escalates to human with full context',
+
+          'd2-num': '02 · Smart Follow-Up',
+          'd2-name': 'Multi-channel nurture,<em> fully automated</em>',
+          'd2-desc': 'Behaviour-triggered sequences fire across email, WhatsApp, and SMS based on what each lead actually does — open, click, reply, or go quiet.',
+          'd2-b1': 'Triggers on open, click, and no-reply', 'd2-b2': 'Adapts channel based on engagement',
+          'd2-b3': '10-touch sequence runs on autopilot', 'd2-b4': 'Books demos when intent is detected',
+
+          'd3-num': '03 · Voice AI',
+          'd3-name': 'Every call answered,<em> every booking captured</em>',
+          'd3-desc': 'Your AI receptionist answers every inbound call, detects intent, checks live calendar availability, and confirms appointments — no hold music, no missed revenue.',
+          'd3-b1': 'Answers in under 2 rings, 24/7', 'd3-b2': 'Detects appointment intent vs general enquiry',
+          'd3-b3': 'Books real slots from your live calendar', 'd3-b4': 'Sends SMS confirmation instantly',
+
+          'd4-num': '04 · AI Support',
+          'd4-name': '80% of tickets resolved<em> in seconds</em>',
+          'd4-desc': 'The AI works through your support queue in real time — resolving password resets, billing questions, and FAQs automatically, escalating only what truly needs a human.',
+          'd4-b1': 'Resolves 70–80% of tickets autonomously', 'd4-b2': 'Uses your SOPs and FAQ library',
+          'd4-b3': 'Priority scoring: high / med / low', 'd4-b4': 'Escalates edge cases with full context',
+
+          'd5-num': '05 · Reputation Management',
+          'd5-name': 'Every review monitored,<em> every reply perfect</em>',
+          'd5-desc': 'AI Kabz watches Google, Yelp, TripAdvisor, and industry-specific platforms. Negative reviews get an instant, empathetic AI response — positive ones get amplified.',
+          'd5-b1': 'Monitors all major review platforms', 'd5-b2': 'AI responds to negatives within minutes',
+          'd5-b3': 'Weekly sentiment trend reports', 'd5-b4': 'Surfaces review requests to happy customers',
+
+          'd6-num': '06 · Call Analytics',
+          'd6-name': 'Every sales call scored,<em> every pattern surfaced</em>',
+          'd6-desc': "AI transcribes, scores, and analyses every sales call — flagging losing patterns, top objections, talk-time ratios, and which reps close and which don't.",
+          'd6-b1': 'Auto-transcription of every call', 'd6-b2': '0–100 sales quality score per call',
+          'd6-b3': 'Talk-time ratio: rep vs prospect', 'd6-b4': 'Flags top objections across all calls',
+
+          'wide-num': 'Calm by default',
+          'wide-h': 'No red badges.<em> No busy dashboards.</em><br>Just the next right thing to do.',
+
+          'voices-num': '02 / 03 · The difference',
+          'voices-h': 'What changes when you use AIKABZ.<em> From day one.</em>',
+          'q1-text': 'Every enquiry gets a reply before your competitor picks up the phone. No more leads going cold because someone was busy with another customer.',
+          'q1-who': 'Respond in seconds, not hours', 'q1-at': 'Automated instant replies across every channel',
+          'q2-text': 'Follow-ups happen automatically — no reminders, no spreadsheets, no dropped balls. Every customer gets the right message at exactly the right time.',
+          'q2-who': 'Follow-ups that never stop', 'q2-at': 'Multi-step sequences running 24/7 on autopilot',
+          'q3-text': 'Your calendar fills itself. Your reviews improve. Your revenue grows — without hiring more staff or working longer hours.',
+          'q3-who': 'More bookings, less effort', 'q3-at': 'Growth that runs while you focus on your work',
+
+          'res-num': '03 / 03 · Results · Median numbers, not the best case',
+          'res-1-k': '+38%', 'res-1-l': 'Revenue lift · first 90 days', 'res-1-sub': 'Median · all verticals',
+          'res-2-k': '<60s', 'res-2-l': 'Lead response time', 'res-2-sub': 'vs 2–4 hour industry avg',
+          'res-3-k': '86%', 'res-3-l': 'Support tickets auto-resolved', 'res-3-sub': 'Without human intervention',
+          'res-4-k': '11×', 'res-4-l': 'Median LTV : CAC ratio', 'res-4-sub': 'Category benchmark: 3×',
+
+          'cta-num': 'Begin',
+          'cta-h': 'Your next quarter<br><em>starts today.</em>',
+          'cta-sub': 'Most businesses see ROI in 30 days. The only risk is waiting.',
+          'cta-btn': 'Book A Demo', 'cta-explore': 'Explore features',
+          'cta-wa': 'WhatsApp us', 'cta-note': 'No credit card · 20-min call · No obligation',
+
+          'foot-tag': 'The AI front desk for service businesses. Every conversation, every booking, every customer — in one place.',
+          'foot-nav-h': 'Navigate', 'foot-nav-features': 'Features',
+          'foot-nav-demos': 'Live Demos', 'foot-nav-results': 'Results', 'foot-nav-why': 'Why AIKABZ',
+          'foot-gs-h': 'Get Started', 'foot-gs-demo': 'Book A Demo',
+          'foot-copy': '© 2026 AIKABZ — built for service businesses',
+        },
+        es: {
+          'nav-features': 'Funcionalidades',
+          'nav-demos': 'Demos en Vivo',
+          'nav-results': 'Resultados',
+          'nav-cta': 'Reservar Demo',
+
+          'hero-meta': '— Recepcionista IA · Para Todo Negocio de Servicios',
+          'hero-sub-1': 'Empieza a convertir más clientes.',
+          'hero-sub-2': 'AIKABZ ayuda a los negocios a <strong style="color:#F4F1EA;">responder al instante</strong>, hacer seguimiento automático y convertir más consultas en clientes de pago.',
+
+          'strip-label': 'Para cualquier negocio de servicios',
+          'strip-real-estate': 'Inmobiliaria', 'strip-restaurants': 'Restaurantes',
+          'strip-salons': 'Salones', 'strip-fitness': 'Gimnasios',
+          'strip-law': 'Despachos Jurídicos', 'strip-agencies': 'Agencias',
+          'strip-home': 'Servicios del Hogar', 'strip-medspas': 'Centros Estéticos',
+          'strip-photo': 'Fotografía', 'strip-wellness': 'Bienestar',
+          'strip-auto': 'Automoción', 'strip-clinics': 'Clínicas',
+
+          'feat-h': 'Un verdadero compañero IA —<em> no un chatbot.</em>',
+          'feat-1-k': '01 · Recepcionista IA', 'feat-1-name': 'Nunca pierde un cliente',
+          'feat-1-desc': 'Responde WhatsApp, Instagram, LinkedIn, Messenger, email y SMS como un compañero real. Conoce tus servicios, precios y horarios.',
+          'feat-2-k': '02 · Reservas en Tiempo Real', 'feat-2-name': 'Reserva mientras duermes',
+          'feat-2-desc': 'Propone horarios disponibles reales de tu calendario. Reserva, reprograma y cancela desde el chat — con una sola confirmación.',
+          'feat-3-k': '03 · IA de Voz', 'feat-3-name': 'Compañero telefónico 24/7',
+          'feat-3-desc': 'Atiende, califica y reserva en cada llamada. Cada llamada grabada, transcrita, puntuada y enrutada de forma inteligente.',
+          'feat-4-k': '04 · Bandeja Unificada', 'feat-4-name': 'Todos los canales, una bandeja',
+          'feat-4-desc': 'Cada conversación de todos los canales en un solo lugar. La IA gestiona la recepción por defecto — cambia a humano con un solo toque.',
+          'feat-5-k': '05 · Base de Conocimiento', 'feat-5-name': 'Conoce tu negocio a fondo',
+          'feat-5-desc': 'Precios, políticas, servicios y preguntas frecuentes. La IA nunca inventa lo que no sabe — responde desde tu propia base de conocimiento.',
+          'feat-6-k': '06 · Motor de Retención', 'feat-6-name': 'Reactivaciones y referencias',
+          'feat-6-desc': 'Reactivaciones automáticas, puntuación IA de leads y un motor de referencias que convierte a los clientes felices en tu canal de crecimiento.',
+
+          'split-num': 'Entrenado en TU negocio',
+          'split-h': 'La IA conoce tus servicios, tus políticas, tus precios —<em> y solo responde a partir de eso.</em>',
+          'split-p': 'Cuéntanos qué tipo de negocio tienes y AI Kabz se configura solo — tus servicios, tus precios, tu tono. Cada mensaje que envía y cada pregunta que responde viene directamente de tu propia información. Nunca adivina ni inventa nada.',
+
+          'demos-tag': 'Demos en Vivo',
+          'demos-h': 'Míralo funcionar —<em> en tiempo real</em>',
+          'demos-p': 'Desplázate por cada demo.',
+
+          'd1-num': '01 · Recepcionista IA de Kabz',
+          'd1-name': 'IA que responde en segundos, día y noche,<em> las 24 horas</em>',
+          'd1-desc': 'AI Kabz gestiona cada consulta entrante en WhatsApp, Instagram DMs, email y más — calificando leads, respondiendo preguntas y reservando citas en menos de 3 segundos.',
+          'd1-b1': 'Responde en 7+ canales simultáneamente', 'd1-b2': 'Califica leads con conversación natural',
+          'd1-b3': 'Reserva directamente desde el hilo del chat', 'd1-b4': 'Escala a humano con contexto completo',
+
+          'd2-num': '02 · Seguimiento Inteligente',
+          'd2-name': 'Nutrición multicanal,<em> totalmente automatizada</em>',
+          'd2-desc': 'Secuencias activadas por comportamiento en email, WhatsApp y SMS según lo que hace cada lead — abrir, hacer clic, responder o quedarse en silencio.',
+          'd2-b1': 'Se activa en apertura, clic y sin respuesta', 'd2-b2': 'Adapta el canal según la interacción',
+          'd2-b3': 'Secuencia de 10 contactos en piloto automático', 'd2-b4': 'Reserva demos cuando detecta intención',
+
+          'd3-num': '03 · IA de Voz',
+          'd3-name': 'Cada llamada atendida,<em> cada reserva capturada</em>',
+          'd3-desc': 'Tu recepcionista IA responde cada llamada entrante, detecta la intención, comprueba disponibilidad en tiempo real y confirma citas — sin música de espera, sin ingresos perdidos.',
+          'd3-b1': 'Responde en menos de 2 tonos, 24/7', 'd3-b2': 'Detecta intención de cita vs consulta general',
+          'd3-b3': 'Reserva horarios reales de tu calendario', 'd3-b4': 'Envía confirmación por SMS al instante',
+
+          'd4-num': '04 · Soporte IA',
+          'd4-name': 'El 80% de los tickets resueltos<em> en segundos</em>',
+          'd4-desc': 'La IA trabaja tu cola de soporte en tiempo real — resolviendo contraseñas, preguntas de facturación y FAQs automáticamente, escalando solo lo que realmente necesita un humano.',
+          'd4-b1': 'Resuelve el 70–80% de tickets de forma autónoma', 'd4-b2': 'Usa tus SOPs y biblioteca de FAQs',
+          'd4-b3': 'Puntuación de prioridad: alta / media / baja', 'd4-b4': 'Escala casos complejos con contexto completo',
+
+          'd5-num': '05 · Gestión de Reputación',
+          'd5-name': 'Cada reseña monitorizada,<em> cada respuesta perfecta</em>',
+          'd5-desc': 'AI Kabz vigila Google, Yelp, TripAdvisor y plataformas del sector. Las reseñas negativas reciben una respuesta IA inmediata y empática — las positivas se amplifican.',
+          'd5-b1': 'Monitoriza todas las plataformas principales', 'd5-b2': 'IA responde a negativas en minutos',
+          'd5-b3': 'Informes semanales de tendencias de sentimiento', 'd5-b4': 'Solicita reseñas a clientes satisfechos',
+
+          'd6-num': '06 · Análisis de Llamadas',
+          'd6-name': 'Cada llamada de ventas puntuada,<em> cada patrón descubierto</em>',
+          'd6-desc': 'La IA transcribe, puntúa y analiza cada llamada de ventas — detectando patrones perdedores, principales objeciones, ratios de tiempo de habla y qué comerciales cierran.',
+          'd6-b1': 'Transcripción automática de cada llamada', 'd6-b2': 'Puntuación de calidad de ventas 0–100 por llamada',
+          'd6-b3': 'Ratio de tiempo de habla: comercial vs cliente', 'd6-b4': 'Detecta las principales objeciones en todas las llamadas',
+
+          'wide-num': 'Calma por defecto',
+          'wide-h': 'Sin notificaciones urgentes.<em> Sin paneles saturados.</em><br>Solo lo que tienes que hacer ahora.',
+
+          'voices-num': '02 / 03 · La diferencia',
+          'voices-h': 'Qué cambia cuando usas AIKABZ.<em> Desde el primer día.</em>',
+          'q1-text': 'Cada consulta recibe respuesta antes de que tu competidor descuelgue el teléfono. Sin más leads fríos porque alguien estaba ocupado con otro cliente.',
+          'q1-who': 'Responde en segundos, no en horas', 'q1-at': 'Respuestas automáticas instantáneas en todos los canales',
+          'q2-text': 'Los seguimientos ocurren automáticamente — sin recordatorios, sin hojas de cálculo, sin nada que se escape. Cada cliente recibe el mensaje correcto en el momento exacto.',
+          'q2-who': 'Seguimientos que nunca paran', 'q2-at': 'Secuencias de múltiples pasos funcionando 24/7 en piloto automático',
+          'q3-text': 'Tu agenda se llena sola. Tus reseñas mejoran. Tus ingresos crecen — sin contratar más personal ni trabajar más horas.',
+          'q3-who': 'Más reservas, menos esfuerzo', 'q3-at': 'Crecimiento que funciona mientras tú te centras en tu trabajo',
+
+          'res-num': '03 / 03 · Resultados · Números medios, no el mejor caso',
+          'res-1-k': '+38%', 'res-1-l': 'Aumento de ingresos · primeros 90 días', 'res-1-sub': 'Mediana · todos los sectores',
+          'res-2-k': '<60s', 'res-2-l': 'Tiempo de respuesta a leads', 'res-2-sub': 'vs promedio del sector 2–4 horas',
+          'res-3-k': '86%', 'res-3-l': 'Tickets de soporte resueltos automáticamente', 'res-3-sub': 'Sin intervención humana',
+          'res-4-k': '11×', 'res-4-l': 'Ratio mediano LTV : CAC', 'res-4-sub': 'Referencia del sector: 3×',
+
+          'cta-num': 'Comenzar',
+          'cta-h': 'Tu próximo trimestre<br><em>empieza hoy.</em>',
+          'cta-sub': 'La mayoría de negocios ven retorno en 30 días. El único riesgo es esperar.',
+          'cta-btn': 'Reservar Demo', 'cta-explore': 'Explorar funcionalidades',
+          'cta-wa': 'Eschíbenos por WhatsApp', 'cta-note': 'Sin tarjeta · Llamada de 20 min · Sin compromiso',
+
+          'foot-tag': 'El recepcionista IA para negocios de servicios. Cada conversación, cada reserva, cada cliente — en un solo lugar.',
+          'foot-nav-h': 'Navegar', 'foot-nav-features': 'Funcionalidades',
+          'foot-nav-demos': 'Demos en Vivo', 'foot-nav-results': 'Resultados', 'foot-nav-why': 'Por qué AIKABZ',
+          'foot-gs-h': 'Empezar', 'foot-gs-demo': 'Reservar Demo',
+          'foot-copy': '© 2026 AIKABZ — para negocios de servicios',
+        },
+      };
+
+      const HERO = {
+        en: { line1: 'Stop', line2: 'leaking ', muted: 'revenue.' },
+        es: { line1: 'Deja de', line2: 'perder ', muted: 'ingresos.' },
+      };
+
+      let currentLang = 'en';
+
+      function buildHeroTitle(lang) {
+        const h1 = document.querySelector('[data-i18n-hero]');
+        if (!h1) return;
+        const { line1, line2, muted } = HERO[lang];
+        let d = 0.02;
+        function ch(c, extra) {
+          const s = `<span class="ch" style="animation-delay:${d.toFixed(2)}s${extra || ''}">${c === ' ' ? ' ' : c}</span>`;
+          d += 0.03; return s;
+        }
+        let html = [...line1].map(c => ch(c)).join('') + '<br>';
+        html += [...line2].map(c => ch(c)).join('');
+        html += [...muted].map(c => ch(c, ';font-style:italic;color:rgba(244,241,234,.55)')).join('');
+        h1.innerHTML = html;
+      }
+
+      function updateStrip(lang) {
+        const row = document.getElementById('strip-row');
+        if (!row) return;
+        row.querySelectorAll('[data-i18n]').forEach(el => {
+          const v = LANGS[lang][el.dataset.i18n];
+          if (v !== undefined) el.textContent = v;
+        });
+        // Re-run the duplication
+        const origItems = [...row.querySelectorAll('[data-i18n]')];
+        const clones = origItems.map(el => el.cloneNode(true));
+        // Remove any previously added clones (those without data-i18n)
+        [...row.children].forEach(c => { if (!c.hasAttribute('data-i18n')) c.remove(); });
+        clones.forEach(c => row.appendChild(c));
+      }
+
+      function setLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        // Update pill
+        const lpEn = document.getElementById('lp-en');
+        const lpEs = document.getElementById('lp-es');
+        if (lpEn && lpEs) {
+          lpEn.className = lang === 'en' ? 'lp-on' : '';
+          lpEs.className = lang === 'es' ? 'lp-on' : '';
+        }
+        // Hero title rebuild
+        buildHeroTitle(lang);
+        // All data-i18n elements (textContent)
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          // Skip strip items — handled by updateStrip
+          if (el.classList.contains('strip-item')) return;
+          const v = LANGS[lang][el.dataset.i18n];
+          if (v !== undefined) el.textContent = v;
+        });
+        // All data-i18n-html elements (innerHTML)
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+          const v = LANGS[lang][el.dataset.i18nHtml];
+          if (v !== undefined) el.innerHTML = v;
+        });
+        // Strip (special — needs re-duplication)
+        updateStrip(lang);
+        // Also update <html lang> for SEO
+        document.title = lang === 'es'
+          ? 'AIKABZ — Recepcionista IA para Negocios de Servicios'
+          : 'AIKABZ — AI Front Desk for Service Businesses';
+        // Persist preference
+        try { localStorage.setItem('aikabz-lang', lang); } catch (_) {}
+      }
+
+      window.toggleLang = function () {
+        setLang(currentLang === 'en' ? 'es' : 'en');
+      };
+
+      // Auto-detect on first load
+      (function () {
+        let saved;
+        try { saved = localStorage.getItem('aikabz-lang'); } catch (_) {}
+        const pref = saved || (navigator.language || '').slice(0, 2).toLowerCase();
+        if (pref === 'es') setLang('es');
+      })();
     })();
   </script>
 
