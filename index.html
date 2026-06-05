@@ -3099,19 +3099,19 @@
         h1.innerHTML = html;
       }
 
+      const STRIP_KEYS = [
+        'strip-real-estate','strip-restaurants','strip-salons','strip-fitness',
+        'strip-law','strip-agencies','strip-home','strip-medspas',
+        'strip-photo','strip-wellness','strip-auto','strip-clinics'
+      ];
+
       function updateStrip(lang) {
         const row = document.getElementById('strip-row');
         if (!row) return;
-        row.querySelectorAll('[data-i18n]').forEach(el => {
-          const v = LANGS[lang][el.dataset.i18n];
-          if (v !== undefined) el.textContent = v;
-        });
-        // Re-run the duplication
-        const origItems = [...row.querySelectorAll('[data-i18n]')];
-        const clones = origItems.map(el => el.cloneNode(true));
-        // Remove any previously added clones (those without data-i18n)
-        [...row.children].forEach(c => { if (!c.hasAttribute('data-i18n')) c.remove(); });
-        clones.forEach(c => row.appendChild(c));
+        const items = STRIP_KEYS.map(k =>
+          `<span class="strip-item" data-i18n="${k}">${LANGS[lang][k]}</span>`
+        ).join('');
+        row.innerHTML = items + items;
       }
 
       function setLang(lang) {
